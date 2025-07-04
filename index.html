@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVB Portraiture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .monogram {
+            font-size: 3rem;
+            font-weight: normal;
+            letter-spacing: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #f5f5f5;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.3rem;
+            color: #999;
+            font-weight: 300;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portraits-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            padding-bottom: 1rem;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .portraits-grid:active {
+            cursor: grabbing;
+        }
+
+        .portraits-grid::-webkit-scrollbar {
+            height: 12px;
+        }
+
+        .portraits-grid::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 6px;
+        }
+
+        .portraits-grid::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 6px;
+        }
+
+        .portraits-grid::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+
+        .portrait-container {
+            position: relative;
+            flex: 0 0 450px;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .portrait-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* About Section */
+        .about {
+            max-width: 600px;
+            margin: 0 auto 6rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1rem;
+            color: #f5f5f5;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid #333;
+            background: #050505;
+        }
+
+        .contact h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            color: #ccc;
+            text-decoration: none;
+            letter-spacing: 0.05rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: #f5f5f5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .monogram {
+                font-size: 2.2rem;
+                letter-spacing: 0.3rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 0.2rem;
+            }
+
+            .portrait-container {
+                flex: 0 0 250px;
+            }
+
+            header {
+                padding: 3rem 1rem;
+            }
+
+            .gallery {
+                padding: 4rem 1rem;
+            }
+
+            .about {
+                padding: 0 1rem;
+            }
+
+            .contact {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .monogram {
+                font-size: 1.8rem;
+                letter-spacing: 0.2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .portrait-container {
+                flex: 0 0 200px;
+            }
+
+            .about h2, .contact h2 {
+                font-size: 1.5rem;
+            }
+
+            .about p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus states for accessibility */
+        .contact-email:focus {
+            outline: 2px solid #666;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="monogram">BVB</h1>
+        <p class="subtitle">PORTRAITURE</p>
+    </header>
+
+    <main>
+        <section class="gallery">
+            <div class="portraits-grid">
+                <div class="portrait-container">
+                    <img src="https://bvbportraits.com/photos/IMG_4641.jpg" alt="Portrait I - Chiaroscuro study">
+                </div>
+                <div class="portrait-container">
+                    <img src="https://bvbportraits.com/photos/IMG_5419.jpg" alt="Portrait II - Classical lighting">
+                </div>
+                <div class="portrait-container">
+                    <img src="https://bvbportraits.com/photos/IMG_5615.jpg" alt="Portrait III - Dramatic contrast">
+                </div>
+                <div class="portrait-container">
+                    <img src="https://bvbportraits.com/photos/IMG_5884.jpg" alt="Portrait IV - Shadow study">
+                </div>
+                <div class="portrait-container">
+                    <img src="https://bvbportraits.com/photos/IMG_5983.jpg" alt="Portrait V - Light direction">
+                </div>
+                <div class="portrait-container">
+                    <img src="portrait6.jpg" alt="Portrait VI - Tonal range">
+                </div>
+            </div>
+
+            <div class="about">
+                <h2>The Portraits</h2>
+                <p>These portraits explore the classical tradition of chiaroscuro lighting, emphasizing the dramatic interplay of light and shadow to reveal character and presence.</p>
+                <p>Each session is an artistic collaboration focused on capturing the essential qualities that make each subject compelling, continuing a tradition that spans centuries of portraiture.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contact">
+        <h2>Contact</h2>
+        <a href="mailto:vanbesien@gmail.com" class="contact-email">vanbesien@gmail.com</a>
+    </footer>
+
+    <script>
+        const gallery = document.querySelector('.portraits-grid');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        gallery.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - gallery.offsetLeft;
+            scrollLeft = gallery.scrollLeft;
+        });
+
+        gallery.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        gallery.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        gallery.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - gallery.offsetLeft;
+            const walk = (x - startX) * 2;
+            gallery.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
