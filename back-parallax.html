@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVB Portraiture</title>
+    <style>
+        /*
+         * CSS Architecture
+         * ----------------
+         * 1. Root Variables: Centralized control for theme.
+         * 2. Global Resets & Base Styles: Cross-browser consistency.
+         * 3. Parallax Section: The core logic for the parallax effect.
+         * 4. Static Content Section: Styling for non-parallax text areas.
+         * 5. Header & Footer: Basic site identification and closing.
+        */
+
+        :root {
+            --color-background: #101010;
+            --color-text-primary: #e0e0e0;
+            --color-text-secondary: #a0a0a0;
+            --color-accent: #b8ae9c;
+            --font-serif: 'Times New Roman', Times, serif;
+            --font-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --section-height: 100vh; /* Each parallax section is full viewport height */
+        }
+
+        /* -- Global Resets & Base Styles -- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            font-family: var(--font-sans-serif);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* -- Parallax Section -- */
+        .parallax-section {
+            /* Set the height for the section */
+            height: var(--section-height);
+            position: relative;
+
+            /* The parallax magic */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            /* For readability, add a subtle overlay on the images */
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+        }
+
+        .parallax-section h1 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: white;
+            /* Center the title within the section */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        /* -- Static Content Section -- */
+        .content-section {
+            padding: 5rem 2rem;
+            background-color: var(--color-background);
+            position: relative; /* Ensures it scrolls OVER the fixed backgrounds */
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            max-width: 65ch;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .content-section a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .content-section a:hover,
+        .content-section a:focus {
+            border-bottom-color: var(--color-accent);
+        }
+
+        /* -- Footer -- */
+        footer.main-footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            background-color: #0c0c0c;
+            position: relative;
+            z-index: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main>
+        <!-- The first parallax section also serves as the header -->
+        <section class="parallax-section" style="background-image: url('https://bvbportraits.com/photos/IMG_4641.jpg');">
+            <h1>BVB PORTRAITURE</h1>
+        </section>
+
+        <!-- The main content block with text -->
+        <section id="about" class="content-section">
+            <div class="content-wrapper">
+                <h2>The Portraits</h2>
+                <p>
+                    This work is an exploration of presence, grounded in the classical tradition of chiaroscuro. Each portrait is a collaboration, a quiet moment of observation intended to create a lasting and honest image, distinct from the fleeting nature of contemporary photography.
+                </p>
+            </div>
+        </section>
+
+        <!-- A second parallax image to create separation and visual interest -->
+        <section class="parallax-section" style="background-image: url('https://bvbportraits.com/photos/IMG_4859.jpg');">
+        </section>
+        
+        <section id="about" class="content-section">
+            <div class="content-wrapper">
+                <h2 style="margin-top: 3rem;">Contact</h2>
+                <p>For inquiries regarding sittings and collaboration, please direct correspondence to:</p>
+                <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- A third parallax image -->
+        <section class="parallax-section" style="background-image: url('https://bvbportraits.com/photos/IMG_5723.jpg');">
+        </section>
+        
+    </main>
+    <footer class="main-footer">
+        <p>&copy; 2024 BVB Portraiture. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
