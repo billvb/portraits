@@ -7,6 +7,11 @@
     <!-- To use 'Playfair Display', the following line would be needed: -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Bilbo+Swash+Caps&family=Birthstone&family=Corinthia:wght@400;700&family=Dr+Sugiyama&family=Italianno&family=Mr+Bedfort&family=Mr+Dafoe&family=Mrs+Saint+Delafield&family=Qwigley&display=swap" rel="stylesheet">
+
+
     <style>
         /*
          * CSS Architecture
@@ -29,6 +34,7 @@
             /* Updated Font Variables */
             /* Using 'Playfair Display' would require the external link in the <head> */
             --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
+            /* --font-header: "Italianno", cursive; */
             --font-body: Georgia, serif;
 
             --section-height: 100vh; /* Each parallax section is full viewport height */
@@ -76,6 +82,11 @@
             border: none;
         }
 
+        img#watermark {
+            min-width: 400px;
+            /* filter: invert(85%) sepia(61%) saturate(469%) hue-rotate(39deg) brightness(101%) contrast(101%); */
+            filter: invert(85%) sepia(91%) saturate(69%);
+        }
 
         /* -- Header & Footer -- */
         header.main-header {
@@ -84,20 +95,25 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 11; /* Ensure header is above the parallax image */
+            z-index: 11;
             text-align: center;
-            padding: 2rem 1rem; /* Increased padding for more space */
         }
 
         header.main-header h1 {
-            font-family: var(--font-header); /* Updated header font */
-            font-size: 2.0rem;
-            letter-spacing: 0.15em;
+            font-family: "Dr Sugiyama", "Cormorant Garamond", cursive;
+            font-size: 3.25rem;
+            letter-spacing: 0;
             color: rgba(240, 230, 220, 0.99);
-            line-height: 1.2; /* Add breathing room for the two lines */
-            font-weight: 300;
-            /* text-transform: uppercase; */
-            margin: 0;
+            line-height: 1.0; /* Add breathing room for the two lines */
+            font-weight: 400;
+            margin: 1.5rem 0 0.0rem 0;
+        }
+
+        header.main-header p.subtitle {
+            font-family: var(--font-header);
+            font-size: 1.45rem;
+            color: rgba(240, 230, 220, 0.8);
+            font-weight: 400;
         }
 
 
@@ -125,7 +141,7 @@
         }
         
         .footer-nav a {
-            font-size: 1.375rem;
+            font-size: 1.5rem;
             color: var(--color-text-primary);
             font-family: var(--font-header);
             font-weight: 100;
@@ -174,7 +190,7 @@
         .content-section h2 {
             font-family: var(--font-header); /* Updated header font */
             font-weight: 400;
-            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-size: clamp(1.75rem, 4vw, 2rem);
             margin-bottom: 1.5rem;
             letter-spacing: 0.05em;
             color: var(--color-text-primary);
@@ -203,15 +219,19 @@
 <body>
 
     <header class="main-header">
-        <h1>
-            B&middot;V&middot;B<br />portraiture
-        </h1>
-        <hr />
+        <h1>B. Van Besien</h1>
+        <p class="subtitle">chiaroscuro portraiture</p>
+        <!-- <h1>
+            B&middot;V&middot;B<br />portraiture 
+            BVB &middot; Portraiture
+        </h1> -->
+        <!-- <img src="bvbwatermark.png" id="watermark" /> -->
+        <!-- <hr /> -->
     </header>
 
     <main>
         <!-- The first parallax section, the header will float over it -->
-        <section class="parallax-section" style="background-image: url('https://bvbportraits.com/photos/IMG_4641.jpg');">
+        <section class="parallax-section" style="background-image: url('sample/BVB-0549.jpg');">
         </section>
 
         <!-- The main content block with text -->
@@ -225,7 +245,7 @@
             </div>
         </section>
 
-        <section class="parallax-section" style="background-image: url('BVB_8417.jpg');">
+        <section class="parallax-section" style="background-image: url('sample/BVB-9979.jpg');">
         </section>
 
         <!-- The main content block with text -->
@@ -238,7 +258,7 @@
         </section>
 
         <!-- A third parallax image -->
-        <section class="parallax-section" style="background-image: url('https://bvbportraits.com/photos/IMG_5723.jpg');">
+        <section class="parallax-section" style="background-image: url('sample/BVB-7012.jpg');">
         </section>
         
         <!-- The main content block with text -->
@@ -251,7 +271,7 @@
         </section>
 
         <!-- A third parallax image -->
-        <section class="parallax-section" style="background-image: url('BVB_8184.jpg');">
+        <section class="parallax-section" style="background-image: url('sample/BVB_6615.jpg');">
         </section>
         
         <!-- The main content block with text -->
@@ -264,7 +284,7 @@
         </section>
 
         <!-- A third parallax image -->
-        <section class="parallax-section" style="background-image: url('BVB_6615.jpg');">
+        <section class="parallax-section" style="background-image: url('sample/BVB-8924.jpg');">
         </section>
 
         <!-- A final text area -->
@@ -285,28 +305,24 @@
             <a href="#gallery">Gallery</a>
         </div>
     </footer>
-
     <script>
-        // This script addresses a common rendering bug in mobile browsers (especially Chrome on Android)
-        // where `position: fixed` elements like the footer may not appear on initial page load.
-        // It forces the browser to repaint the footer, ensuring it is visible.
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                alert('This is a test alert to ensure the footer is visible on page load. If you see this, the footer should be displayed correctly.');
-                const footer = document.querySelector('.main-footer');
-                if (footer) {
-                    alert('Footer found, applying fix.');
-                    // Toggling the display property forces the browser to recalculate layout and repaint.
-                    footer.style.display = 'none';
-                    // This is a forced reflow, which is necessary for the trick to work.
-                    footer.offsetHeight;
-                    footer.style.display = 'flex';
-                }
-                else {
-                    alert('Footer not found, no fix applied.');
-                }
-            }, 100); // A small delay ensures the initial layout is complete.
-        });
+        window.addEventListener('load', () => {
+  // Only scroll if body is taller than window
+  if (document.body.scrollHeight > window.innerHeight) {
+    window.scrollBy(0, 1);     // scroll down 1px
+    window.scrollBy(0, -1);    // scroll back up
+  } else {
+    // Fallback: add 1px dummy element to trigger scroll
+    const dummy = document.createElement('div');
+    dummy.style.height = '1px';
+    document.body.appendChild(dummy);
+    window.scrollBy(0, 1);
+    window.scrollBy(0, -1);
+    document.body.removeChild(dummy);
+  }
+});
+
     </script>
+
 </body>
 </html>
