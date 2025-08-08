@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVB Portraiture</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Bilbo+Swash+Caps&family=Birthstone&family=Corinthia:wght@400;700&family=Dr+Sugiyama&family=Italianno&family=Mr+Bedfort&family=Mr+Dafoe&family=Mrs+Saint+Delafield&family=Qwigley&display=swap" rel="stylesheet">
+
+
+    <style>
+        /*
+         * CSS Architecture
+         * ----------------
+         * 1. Root Variables: Centralized control for theme.
+         * 2. Global Resets & Base Styles: Cross-browser consistency.
+         * 3. Header & Footer: Site identification and footer navigation.
+         * 4. Parallax Section: The core logic for the parallax effect.
+         * 5. Static Content Section: Styling for non-parallax text areas.
+        */
+
+        :root {
+            /* Changed background to pure black for seamless transitions */
+            --color-background: #000; 
+            --color-text-primary: #e0e0e0;
+            --color-text-secondary: #a0a0a0;
+            --color-accent: #b8ae9c;
+            --color-gold: #d4af37; /* A more distinct gold for the title */
+            
+            /* Updated Font Variables */
+            /* Using 'Playfair Display' would require the external link in the <head> */
+            --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
+            /* --font-header: "Italianno", cursive; */
+            --font-body: Georgia, serif;
+
+            --section-height: 100vh; /* Each parallax section is full viewport height */
+            --footer-height: 5rem; /* Increased height for links */
+        }
+
+        /* -- Global Resets & Base Styles -- */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            font-family: var(--font-body); /* Updated body font */
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        main {
+            /* Add padding to the bottom to prevent content from being hidden by the fixed footer */
+            padding-bottom: var(--footer-height);
+        }
+        
+        hr {
+            height: 1px;
+            background: linear-gradient(to right,
+            rgba(212, 175, 55, 0),
+            rgba(212, 175, 55, 0.6),
+            rgba(212, 175, 55, 0));
+            margin: 1rem 0;
+            width: 25%;
+            min-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            border: none;
+        }
+
+        img#watermark {
+            min-width: 400px;
+            /* filter: invert(85%) sepia(61%) saturate(469%) hue-rotate(39deg) brightness(101%) contrast(101%); */
+            filter: invert(85%) sepia(91%) saturate(69%);
+        }
+
+        /* -- Header & Footer -- */
+        header.main-header {
+            /* Positioned absolutely to overlay the first image but scroll with the page */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 11;
+            text-align: center;
+        }
+
+        header.main-header h1 {
+            font-family: "Dr Sugiyama", "Cormorant Garamond", cursive;
+            font-size: 3.35rem;
+            letter-spacing: 0;
+            color: rgba(240, 230, 220, 0.99);
+            line-height: 1.0; /* Add breathing room for the two lines */
+            font-weight: 400;
+            margin: 1.5rem 0 0.0rem 0;
+        }
+
+        header.main-header p.subtitle {
+            font-family: var(--font-header);
+            font-size: 1.45rem;
+            color: rgba(240, 230, 220, 0.8);
+            font-weight: 400;
+        }
+
+
+        footer.main-footer {
+            text-align: center;
+            padding: 0rem;
+            padding-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            background-color: var(--color-background);
+            /* Make the footer fixed to the bottom */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer.main-footer hr {
+            margin-top: 0;
+        }
+        
+        .footer-nav a {
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            font-family: var(--font-header);
+            font-weight: 100;
+            letter-spacing: 0.05rem;
+            text-decoration: none;
+            margin: 0 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover,
+        .footer-nav a:focus {
+            color: var(--color-accent);
+        }
+
+        .footer-copyright {
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+
+        /* -- Parallax Section -- */
+        .parallax-section {
+            height: var(--section-height);
+            position: relative;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-color: #000; /* Set a pure black background for letterboxing */
+        }
+
+        /* -- Static Content Section -- */
+        .content-section {
+            padding: 5rem 2rem;
+            background-color: var(--color-background);
+            position: relative; /* Ensures it scrolls OVER the fixed backgrounds */
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            max-width: 65ch;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-family: var(--font-header); /* Updated header font */
+            font-weight: 400;
+            font-size: clamp(1.75rem, 4vw, 2rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--color-text-primary);
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .content-section a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .content-section a:hover,
+        .content-section a:focus {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .swiper-slide {
+            text-align: center;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .swiper-pagination-bullet {
+            opacity: 0.10;
+            background: var(--color-gold);
+            width: 8px;
+            height: 8px;
+            margin: 0 8px;
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>B. Van Besien</h1>
+        <p class="subtitle">chiaroscuro portraiture</p>
+        <!-- <h1>
+            B&middot;V&middot;B<br />portraiture 
+            BVB &middot; Portraiture
+        </h1> -->
+        <!-- <img src="bvbwatermark.png" id="watermark" /> -->
+        <!-- <hr /> -->
+    </header>
+
+    <main>
+        <!-- The first parallax section, the header will float over it -->
+        <section class="parallax-section" style="background-image: url('sample/BVB-0549.jpg');">
+        </section>
+
+        <!-- The main content block with text -->
+        <section id="about" class="content-section">
+            <div class="content-wrapper">
+                <h2>The Portraits</h2>
+                <p>
+                    This work is an exploration of presence, grounded in the classical tradition of chiaroscuro. Each portrait is a collaboration, a quiet moment of observation intended to create a lasting and honest image, distinct from the fleeting nature of contemporary photography.
+                </p>
+                <p><i>Comissions start at $1,000.</i> Some work is paid for, but some work is called for -- if you are interested to sit as a subject, please reach out.</p>
+            </div>
+        </section>
+
+        <section class="parallax-section" style="background-image: url('sample/BVB-9979.jpg');">
+        </section>
+
+        <!-- The main content block with text -->
+        <section id="contact" class="content-section">
+            <div class="content-wrapper">
+                <h2>Contact</h2>
+                <p>For inquiries regarding sittings and collaboration, please direct correspondence to:</p>
+                <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- A third parallax image -->
+        <section class="parallax-section" style="background-image: url('sample/BVB-7012.jpg');">
+        </section>
+        
+        <!-- The main content block with text -->
+        <section id="" class="content-section">
+            <div class="content-wrapper">
+                <h2>More stuff</h2>
+                <p>For inquiries regarding sittings and collaboration, please direct correspondence to:</p>
+                <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- A third parallax image -->
+        <section class="parallax-section" style="background-image: url('sample/BVB_6615.jpg');">
+        </section>
+        
+        <!-- The main content block with text -->
+        <section id="" class="content-section">
+            <div class="content-wrapper">
+                <h2>More stuff</h2>
+                <p>For inquiries regarding sittings and collaboration, please direct correspondence to:</p>
+                <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a></p>
+            </div>
+        </section>
+
+        <!-- A third parallax image -->
+        <section class="parallax-section" style="background-image: url('sample/BVB-8924.jpg');">
+        </section>
+
+        <!-- A final text area -->
+        <section id="gallery" class="content-section">
+            <div class="content-wrapper">
+                <h2>Gallery</h2>
+                <p>For inquiries regarding sittings and collaboration, please direct correspondence to:</p>
+                <p class="footer-copyright">&copy; 2024 BVB Portraiture. All rights reserved.</p>
+
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                
+                        <div class="swiper-slide">
+                            <img src="sample/BVB-0011.jpg" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="sample/BVB-0063_2.jpg" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="sample/BVB-7012.jpg" />
+                        </div>
+                
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <hr />
+        <div class="footer-nav">
+            <a href="#about">The Portraits</a>
+            <a href="#contact">Contact</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        // Only scroll if body is taller than window
+        if (document.body.scrollHeight > window.innerHeight) {
+            window.scrollBy(0, 1);     // scroll down 1px
+            window.scrollBy(0, -1);    // scroll back up
+        } else {
+            // Fallback: add 1px dummy element to trigger scroll
+            const dummy = document.createElement('div');
+            dummy.style.height = '1px';
+            document.body.appendChild(dummy);
+            window.scrollBy(0, 1);
+            window.scrollBy(0, -1);
+            document.body.removeChild(dummy);
+        }
+    });
+
+
+    function toggleQR() {
+        var qrCode = document.getElementById("qr-code");
+        if (qrCode.style.display === "none") {
+            qrCode.style.display = "block";
+        } else {
+            qrCode.style.display = "none";
+        }
+    }
+    var currentYear = new Date().getFullYear();
+
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+    });
+
+</script>
+
+</body>
+</html>
