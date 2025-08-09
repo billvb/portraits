@@ -18,16 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Dr+Sugiyama&display=swap" rel="stylesheet">
 
     <style>
-        /*
-         * CSS Architecture
-         * ----------------
-         * 1. Root Variables: Centralized control for theme.
-         * 2. Global Resets & Base Styles: Cross-browser consistency.
-         * 3. Fixed Header & Static Footer: For persistent site identity and navigation.
-         * 4. Fullscreen Swiper: Styling for the main image gallery.
-         * 5. Contact Modal: Styles for the pop-up contact information.
-        */
-
         :root {
             --color-background: #000;
             --color-text-primary: #e0e0e0;
@@ -39,8 +29,7 @@
             --font-title: "Dr Sugiyama", cursive;
             --font-body: Georgia, serif;
 
-            --header-height: 10rem;
-            --footer-height: 6rem;
+            --footer-height: 4rem;
         }
 
         /* -- Global Resets & Base Styles -- */
@@ -52,9 +41,8 @@
             padding: 0;
         }
 
-        html,
-        body {
-            height: 100vh;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -63,22 +51,16 @@
             font-family: var(--font-body);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            display: flex;
-            flex-direction: column;
         }
 
         main {
-            flex-grow: 1;
-            position: relative;
-            /* overflow: hidden; */
+            /* Add padding to prevent final content from being hidden by the fixed footer */
             padding-bottom: var(--footer-height);
         }
 
         a {
             color: var(--color-accent);
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
         }
 
         /* -- Fixed Header & Static Footer -- */
@@ -91,6 +73,7 @@
             text-align: center;
             padding-top: 2rem;
             pointer-events: none;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
         }
 
         .main-header h1 {
@@ -100,22 +83,6 @@
             line-height: 1.0;
             font-weight: 400;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
-        }
-
-        section h2 {
-            font-family: var(--font-header);
-            font-size: clamp(2rem, 6vw, 2.5rem);
-            color: rgba(240, 230, 220, 0.95);
-            font-weight: 500;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
-            margin-top: 2.5rem;
-        }
-
-        section p {
-            color: var(--color-text-secondary);
-            font-size: clamp(1rem, 4vw, 1.0rem);
-            line-height: 1.4;
-            margin: 1rem 0;
         }
 
         .main-header p.subtitle {
@@ -142,13 +109,13 @@
         }
 
         .footer-nav a {
-            font-size: clamp(1.5rem, 4vw, 1.75rem);
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             color: var(--color-text-primary);
             font-family: var(--font-header);
             font-weight: 300;
             letter-spacing: 0.05rem;
             text-decoration: none;
-            margin: 0 1rem;
+            margin: 0 1.5rem;
             transition: color 0.3s ease;
             cursor: pointer;
         }
@@ -158,50 +125,83 @@
             color: var(--color-accent);
         }
 
-        section.contact {
-            padding: 2rem;
+        /* -- Page Sections -- */
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            color: var(--color-text-secondary);
         }
 
-        /* -- Fullscreen Swiper -- */
+        #gallery-view {
+            height: 100vh;
+            /* Make gallery fill the initial screen */
+        }
+
+        #contact-view {
+            padding: 8rem 2rem;
+            /* Give contact section space */
+        }
+
+        /* -- Swiper / Gallery View -- */
         .swiper {
             width: 100%;
-            height: calc(100vb - var(--footer-height));
-            /* position: absolute;
-            top: 0;
-            left: 0; */
-            z-index: 1;
+            height: 100%;
         }
 
         .swiper-slide {
             display: flex;
             justify-content: center;
             align-items: center;
+            background-color: #000;
         }
 
         .swiper-slide img {
             display: block;
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: contain;
         }
 
-        .swiper-pagination {
-            bottom: 20px !important;
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--color-text-primary);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            opacity: 1;
         }
 
         .swiper-pagination-bullet {
             opacity: 0.5;
             background: var(--color-text-primary);
-            width: 8px;
-            height: 8px;
-            margin: 0 8px !important;
         }
 
         .swiper-pagination-bullet-active {
             opacity: 1;
             background: var(--color-gold);
+        }
+
+        /* -- Contact View Content -- */
+        #contact-view h2 {
+            font-family: var(--font-header);
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            color: rgba(240, 230, 220, 0.95);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        #contact-view p {
+            color: var(--color-text-secondary);
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            line-height: 1.6;
+            margin-top: 1.5rem;
+            max-width: 60ch;
         }
     </style>
 </head>
@@ -214,19 +214,20 @@
         <p class="subtitle">chiaroscuro portraiture</p>
     </header>
 
-    <!-- Main content now fills the space between header overlay and footer -->
+    <!-- Main content area -->
     <main>
-        <section class="gallery">
+        <section id="gallery-view">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <!-- All images are now swiper slides -->
                     <div class="swiper-slide"><img src="sample/BVBWEB-5.jpg" alt="BVBWEB-5.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-10.jpg" alt="BVBWEB-10.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-8.jpg" alt="BVBWEB-8.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-17.jpg" alt="BVBWEB-17.jpg"></div>
+                    <div class="swiper-slide"><img src="sample/BVBWEB-2107.jpg" alt="BVBWEB-2107.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-9.jpg" alt="BVBWEB-9.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-13.jpg" alt="BVBWEB-13.jpg"></div>
+                    <div class="swiper-slide"><img src="sample/BVBWEB-1776.jpg" alt="BVBWEB-1776.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-15.jpg" alt="BVBWEB-15.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-11.jpg" alt="BVBWEB-11.jpg"></div>
@@ -234,6 +235,7 @@
                     <div class="swiper-slide"><img src="sample/BVBWEB-16.jpg" alt="BVBWEB-16.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-14.jpg" alt="BVBWEB-14.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-2.jpg" alt="BVBWEB-2.jpg"></div>
+                    <div class="swiper-slide"><img src="sample/BVBWEB-2231.jpg" alt="BVBWEB-2231.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-4.jpg" alt="BVBWEB-4.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-7.jpg" alt="BVBWEB-7.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-18.jpg" alt="BVBWEB-18.jpg"></div>
@@ -246,24 +248,25 @@
                 <div class="swiper-pagination"></div>
             </div>
         </section>
-        <section class="contact">
-            <a name="contact"></a>
-            <h2>The Portraits</h2>
-            <p>For inquiries, please reach out via <a href="#">email at .com</a>.</p>
-            <h2>Commissions</h2>
-            <p><i>Commissions start at $1,500.</i> More details follow.</p>
-            <h2>Contact</h2>
-            <p>
-                Please contact me through email, at <a href="#">bill@bvbportraits.com</a>
-            </p>
+
+        <section id="contact-view">
+            <div>
+                <h2>The Portraits</h2>
+                <p>This work is an exploration of presence, grounded in the classical tradition of chiaroscuro. Each
+                    portrait is a collaboration, a quiet moment of observation intended to create a lasting and honest
+                    image.</p>
+                <h2>Commissions</h2>
+                <p><i>Commissions start at $1,500.</i> For inquiries regarding sittings and collaborations, please
+                    direct correspondence to <a href="mailto:bill@bvbportraits.com">bill@bvbportraits.com</a>.</p>
+            </div>
         </section>
     </main>
 
-    <!-- Static footer that does not overlap the swiper -->
+    <!-- Static footer with navigation links -->
     <footer class="main-footer">
         <div class="footer-nav">
-            <a href="#">Portraits</a>
-            <a href="#contact">Contact</a>
+            <a href="#gallery-view">Portraits</a>
+            <a href="#contact-view">Contact</a>
         </div>
     </footer>
 
@@ -271,25 +274,8 @@
     <!-- SwiperJS script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Initialize Swiper and Modal Logic -->
+    <!-- Initialize Swiper -->
     <script>
-        // Hack to get fixed menu to work on android
-        window.addEventListener('load', () => {
-            // Only scroll if body is taller than window
-            if (document.body.scrollHeight > window.innerHeight) {
-                window.scrollBy(0, 1);     // scroll down 1px
-                window.scrollBy(0, -1);    // scroll back up
-            } else {
-                // Fallback: add 1px dummy element to trigger scroll
-                const dummy = document.createElement('div');
-                dummy.style.height = '1px';
-                document.body.appendChild(dummy);
-                window.scrollBy(0, 1);
-                window.scrollBy(0, -1);
-                document.body.removeChild(dummy);
-            }
-        });
-
         // --- Swiper Initialization ---
         var swiper = new Swiper(".mySwiper", {
             loop: true,
@@ -298,37 +284,17 @@
                 crossFade: true
             },
             autoplay: {
-                delay: 10000,
+                delay: 8000,
                 disableOnInteraction: true,
             },
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
             },
-        });
-
-        // --- Modal Logic ---
-        function openModal(modalType) {
-            const modal = document.getElementById(modalType + '-modal');
-            if (modal) {
-                modal.classList.add('visible');
-            }
-        }
-
-        function closeModal(modalType) {
-            const modal = document.getElementById(modalType + '-modal');
-            if (modal) {
-                modal.classList.remove('visible');
-            }
-        }
-
-        // Close modal when clicking on the overlay
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', function (event) {
-                if (event.target === this) {
-                    this.classList.remove('visible');
-                }
-            });
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
     </script>
 
