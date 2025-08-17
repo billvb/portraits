@@ -23,13 +23,11 @@
             --color-text-primary: #e0e0e0;
             --color-text-secondary: #a0a0a0;
             --color-accent: #b8ae9c;
-            --color-gold: #d4af37;
-
+            --color-gold-pagination: #d4af37;
             --font-header: 'Cormorant Garamond', serif;
             --font-title: "Dr Sugiyama", cursive;
             --font-body: Georgia, serif;
-
-            --footer-height: 4rem;
+            --header-height: 6rem;
         }
 
         /* -- Global Resets & Base Styles -- */
@@ -51,78 +49,79 @@
             font-family: var(--font-body);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            /* This padding is now dynamically controlled by the --header-height variable */
+            padding-top: var(--header-height);
         }
 
-        main {
-            /* Add padding to prevent final content from being hidden by the fixed footer */
-            padding-bottom: var(--footer-height);
-        }
+        main {}
 
         a {
+            /* Use the elegant accent color for all links by default */
             color: var(--color-accent);
             text-decoration: none;
         }
 
-        /* -- Fixed Header & Static Footer -- */
+        /* -- New Fixed Top Navigation -- */
         .main-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10;
-            text-align: center;
-            padding-top: 2rem;
-            pointer-events: none;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
-        }
-
-        .main-header h1 {
-            font-family: var(--font-title);
-            font-size: clamp(2.5rem, 8vw, 3.5rem);
-            color: rgba(240, 230, 220, 0.95);
-            line-height: 1.0;
-            font-weight: 400;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
-        }
-
-        .main-header p.subtitle {
-            font-family: var(--font-header);
-            font-size: clamp(1rem, 4vw, 1.45rem);
-            color: rgba(240, 230, 220, 0.85);
-            font-weight: 400;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .main-footer {
+            height: var(--header-height);
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) 70%, transparent);
             display: flex;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
             justify-content: center;
             align-items: center;
-            height: var(--footer-height);
-            background-color: var(--color-background);
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            flex-shrink: 0;
+            padding: 0.5rem 1rem;
+            transition: height 0.3s ease;
+            /* Smooth transition for height change */
         }
 
-        .footer-nav a {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            color: var(--color-text-primary);
-            font-family: var(--font-header);
-            font-weight: 300;
-            letter-spacing: 0.05rem;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            transition: color 0.3s ease;
-            cursor: pointer;
+        .nav-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .footer-nav a:hover,
-        .footer-nav a:focus {
+        .nav-link {
             color: var(--color-accent);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 6px;
+            font-family: var(--font-header);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--color-text-primary);
+        }
+
+        .header-brand-container {
+            text-align: center;
+            line-height: 1;
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+
+        .header-brand {
+            font-family: var(--font-title);
+            font-size: clamp(2.5rem, 5vw, 2.75rem);
+            font-weight: 400;
+            color: var(--color-text-primary);
+            display: block;
+        }
+
+        .brand-subtitle {
+            display: block;
+            font-family: var(--font-header);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--color-text-secondary);
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
         }
 
         /* -- Page Sections -- */
@@ -134,15 +133,16 @@
         }
 
         #gallery-view {
-            height: 100vh;
-            /* Make gallery fill the initial screen */
+            /* Gallery height is the full viewport height minus the header's height */
+            height: calc(100vh - var(--header-height));
         }
 
-        #contact-view {
+        #about-view {
             padding: 8rem 2rem;
-            /* Give contact section space */
         }
 
+        .mySwiper {
+        }
         /* -- Swiper / Gallery View -- */
         .swiper {
             width: 100%;
@@ -152,8 +152,11 @@
         .swiper-slide {
             display: flex;
             justify-content: center;
-            align-items: center;
+            /* Align image to the top of the slide container */
+            align-items: flex-start;
             background-color: #000;
+            /* padding-top: 2rem; */
+            /* Add some space above the image */
         }
 
         .swiper-slide img {
@@ -177,6 +180,10 @@
             opacity: 1;
         }
 
+        .swiper-pagination {
+            bottom: 15px !important;
+        }
+
         .swiper-pagination-bullet {
             opacity: 0.5;
             background: var(--color-text-primary);
@@ -184,11 +191,11 @@
 
         .swiper-pagination-bullet-active {
             opacity: 1;
-            background: var(--color-gold);
+            background: var(--color-gold-pagination);
         }
 
-        /* -- Contact View Content -- */
-        #contact-view h2 {
+        /* -- About View Content -- */
+        #about-view h2 {
             font-family: var(--font-header);
             font-size: clamp(2rem, 6vw, 2.5rem);
             color: rgba(240, 230, 220, 0.95);
@@ -196,22 +203,82 @@
             margin-bottom: 1rem;
         }
 
-        #contact-view p {
+        #about-view p {
             color: var(--color-text-secondary);
             font-size: clamp(1rem, 4vw, 1.1rem);
             line-height: 1.6;
             margin-top: 1.5rem;
             max-width: 60ch;
         }
+
+        /* -- Desktop Navigation Styles (768px and up) -- */
+        @media (min-width: 768px) {
+            .main-header {
+                flex-direction: row;
+            }
+
+            .header-brand-container {
+                margin: 0 120px;
+                /* Symmetrical 120px spacing */
+            }
+
+            /* Hide carets on desktop */
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none;
+            }
+        }
+
+        /* -- Mobile Navigation Styles (below 768px) -- */
+        @media (max-width: 767px) {
+            :root {
+                /* Increase header height on mobile to accommodate stacked layout */
+                --header-height: 6rem;
+            }
+
+            .main-header {
+                flex-direction: column;
+            }
+
+            .header-brand-container {
+                margin: 0.5rem 1rem;
+            }
+
+            /* Hide side links on mobile */
+            .nav-link {
+                display: none;
+            }
+
+            /* Hide dots on mobile */
+            .swiper-pagination {
+                display: none;
+            }
+
+            #gallery-view {
+                height: calc(80vh - var(--header-height));
+                /* height: 10vh; */
+            }
+
+            /* Reduce top padding for about section on mobile */
+            #about-view {
+                padding-top: 4rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Fixed header that overlays the swiper -->
+    <!-- New Fixed Top Navigation Bar -->
     <header class="main-header">
-        <h1>B. Van Besien</h1>
-        <p class="subtitle">chiaroscuro portraiture</p>
+        <div class="nav-group">
+            <a href="#gallery-view" class="nav-link">Portraits</a>
+            <a href="/" class="header-brand-container">
+                <span class="header-brand">B. Van Besien</span>
+                <span class="brand-subtitle">chiaroscuro portraiture</span>
+            </a>
+            <a href="#about-view" class="nav-link">About</a>
+        </div>
     </header>
 
     <!-- Main content area -->
@@ -222,7 +289,7 @@
                     <div class="swiper-slide"><img src="sample/BVBWEB-5.jpg" alt="BVBWEB-5.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-10.jpg" alt="BVBWEB-10.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-8.jpg" alt="BVBWEB-8.jpg"></div>
-                    <div class="swiper-slide"><img src="sample/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div>
+                    <!-- <div class="swiper-slide"><img src="sample/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div> -->
                     <div class="swiper-slide"><img src="sample/BVBWEB-17.jpg" alt="BVBWEB-17.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-2107.jpg" alt="BVBWEB-2107.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-9.jpg" alt="BVBWEB-9.jpg"></div>
@@ -238,7 +305,7 @@
                     <div class="swiper-slide"><img src="sample/BVBWEB-2231.jpg" alt="BVBWEB-2231.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-4.jpg" alt="BVBWEB-4.jpg"></div>
                     <div class="swiper-slide"><img src="sample/BVBWEB-7.jpg" alt="BVBWEB-7.jpg"></div>
-                    <div class="swiper-slide"><img src="sample/BVBWEB-18.jpg" alt="BVBWEB-18.jpg"></div>
+                    <!-- <div class="swiper-slide"><img src="sample/BVBWEB-18.jpg" alt="BVBWEB-18.jpg"></div> -->
                     <div class="swiper-slide"><img src="sample/BVBWEB-3.jpg" alt="BVBWEB-3.jpg"></div>
                 </div>
                 <!-- Navigation Arrows -->
@@ -249,9 +316,9 @@
             </div>
         </section>
 
-        <section id="contact-view">
+        <section id="about-view">
             <div>
-                <h2>The Portraits</h2>
+                <h2>About the Work</h2>
                 <p>This work is an exploration of presence, grounded in the classical tradition of chiaroscuro. Each
                     portrait is a collaboration, a quiet moment of observation intended to create a lasting and honest
                     image.</p>
@@ -262,14 +329,7 @@
         </section>
     </main>
 
-    <!-- Static footer with navigation links -->
-    <footer class="main-footer">
-        <div class="footer-nav">
-            <a href="#gallery-view">Portraits</a>
-            <a href="#contact-view">Contact</a>
-        </div>
-    </footer>
-
+    <!-- Footer has been removed -->
 
     <!-- SwiperJS script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -284,7 +344,7 @@
                 crossFade: true
             },
             autoplay: {
-                delay: 8000,
+                delay: 5000,
                 disableOnInteraction: true,
             },
             pagination: {
@@ -296,6 +356,9 @@
                 prevEl: '.swiper-button-prev',
             },
         });
+
+        // Added click/tap to advance functionality
+        swiper.el.onclick = () => swiper.slideNext();
     </script>
 
 </body>
