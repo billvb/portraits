@@ -27,7 +27,8 @@
             --font-header: 'Cormorant Garamond', serif;
             --font-title: "Dr Sugiyama", cursive;
             --font-body: Georgia, serif;
-            --header-height: 6rem;
+            /* Increased header height to accommodate the new layout */
+            --header-height: 10rem;
         }
 
         /* -- Global Resets & Base Styles -- */
@@ -49,20 +50,17 @@
             font-family: var(--font-body);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            /* This padding is now dynamically controlled by the --header-height variable */
             padding-top: var(--header-height);
         }
 
         main {}
 
         a {
-            /* Use the elegant accent color for all links by default */
             color: var(--color-accent);
             text-decoration: none;
         }
 
-        /* -- New Fixed Top Navigation -- */
-                /* -- Updated Fixed Top Navigation -- */
+        /* -- Updated Fixed Top Navigation -- */
         .main-header {
             position: fixed;
             top: 0;
@@ -74,11 +72,11 @@
             display: flex;
             flex-direction: column;
             /* Vertically center the nav and brand group */
-            justify-content: center;
+            /* justify-content: center; */
             /* Add a small gap between the nav and brand */
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            transition: height 0.3s ease;
+            /* gap: 0.5rem;
+            padding: 1rem 2rem; */
+            /* transition: height 0.3s ease; */
         }
         
         /* -- Updated container for top navigation links -- */
@@ -88,32 +86,17 @@
             /* Horizontally center the nav links */
             justify-content: center;
             /* Add space between the links themselves */
+            font-variant: small-caps;
             gap: 4rem;
-        }
-
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: var(--header-height);
-            z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5) 70%, transparent);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            transition: height 0.3s ease;
-            /* Smooth transition for height change */
+            margin: 1rem 0;
         }
 
         .nav-link {
             color: var(--color-accent);
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 6px;
+            text-decoration: none;
             font-family: var(--font-header);
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+            letter-spacing: 0.1em;
             transition: color 0.3s ease;
             white-space: nowrap;
             position: relative;
@@ -123,18 +106,18 @@
             color: var(--color-text-primary);
         }
 
-
         .header-brand-container {
             text-align: center;
             line-height: 1;
             color: var(--color-text-primary);
             text-decoration: none;
             align-self: center;
+            margin: 1rem 0;
         }
 
         .header-brand {
             font-family: var(--font-title);
-            font-size: clamp(2.5rem, 5vw, 2.75rem);
+            font-size: clamp(2.5rem, 5vw, 3rem);
             font-weight: 400;
             color: var(--color-text-primary);
             display: block;
@@ -146,7 +129,7 @@
             font-size: clamp(1rem, 2vw, 1.3rem);
             color: var(--color-text-secondary);
             letter-spacing: 0.1em;
-            margin-top: 0.25rem;
+            /* margin-top: 0.25rem; */
         }
 
         /* -- Page Sections -- */
@@ -158,7 +141,6 @@
         }
 
         #gallery-view {
-            /* Gallery height is the full viewport height minus the header's height */
             height: calc(100vh - var(--header-height));
         }
 
@@ -166,8 +148,6 @@
             padding: 8rem 2rem;
         }
 
-        .mySwiper {
-        }
         /* -- Swiper / Gallery View -- */
         .swiper {
             width: 100%;
@@ -175,16 +155,25 @@
             padding: 0 40px;
         }
 
+        .swiper-wrapper {
+            align-items: center;
+        }
+
         .swiper-slide {
             display: flex;
             justify-content: center;
             width: 30vw;
             min-width: 450px;
-            /* Align image to the top of the slide container */
-            align-items: center; /*flex-start;*/
+            align-items: center;
             background-color: #000;
-            /* padding-top: 2rem; */
-            /* Add some space above the image */
+            transition: transform 1s ease, opacity 1s ease;
+            transform: scale(0.95);
+            opacity: 0.0;
+        }
+
+        .swiper-slide-active {
+            transform: scale(1);
+            opacity: 1;
         }
 
         .swiper-slide img {
@@ -198,8 +187,8 @@
 
         .swiper-button-next,
         .swiper-button-prev {
-            color: var(--color-text-primary);
-            opacity: 0.5;
+            color: var(--color-gold-pagination);
+            opacity: 0.25;
             transition: opacity 0.3s ease;
         }
 
@@ -213,33 +202,17 @@
         }
 
         .swiper-pagination-bullet {
-            opacity: 0.5;
+            opacity: 0.25;
             background: var(--color-text-primary);
         }
 
         .swiper-pagination-bullet-active {
-            opacity: 1;
+            opacity: 0.5;
             background: var(--color-gold-pagination);
         }
-.swiper-wrapper {
-    /* This vertically centers the images, which looks better with different sizes */
-    align-items: center;
-}
 
-.swiper-slide {
-    /* Add smooth transitions and set the default smaller, faded state */
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    transform: scale(0.8);
-    opacity: 0.5;
-}
-
-.swiper-slide-active {
-    /* Make the centered slide full size and fully visible */
-    transform: scale(1);
-    opacity: 1;
-}
         /* -- About View Content -- */
-        #about-view h2 {
+        section h2 {
             font-family: var(--font-header);
             font-size: clamp(2rem, 6vw, 2.5rem);
             color: rgba(240, 230, 220, 0.95);
@@ -247,9 +220,9 @@
             margin-bottom: 1rem;
         }
 
-        #about-view p {
+        section p {
             color: var(--color-text-secondary);
-            font-size: clamp(1rem, 4vw, 1.1rem);
+            font-size: clamp(1.25rem, 1.25rem, 1.5rem);
             line-height: 1.6;
             margin-top: 1.5rem;
             max-width: 60ch;
@@ -258,58 +231,46 @@
         /* -- Desktop Navigation Styles (768px and up) -- */
         @media (min-width: 768px) {
             .main-header {
-                flex-direction: row;
+                flex-direction: column;
             }
 
-            .header-brand-container {
-                margin: 0 120px;
-                /* Symmetrical 120px spacing */
-            }
-
-            /* Hide carets on desktop */
             .swiper-button-next,
             .swiper-button-prev {
-                display: none;
+                display: flex; /* Show arrows on desktop */
             }
         }
 
         /* -- Mobile Navigation Styles (below 768px) -- */
         @media (max-width: 767px) {
             :root {
-                /* Increase header height on mobile to accommodate stacked layout */
                 --header-height: 6rem;
             }
 
             .main-header {
-                flex-direction: column;
+                /* Center the only visible item (the brand) */
+                justify-content: center;
             }
 
             .header-brand-container {
                 margin: 0.5rem 1rem;
             }
 
-            /* Hide side links on mobile */
-            .nav-link {
+            /* Hide the entire nav container on mobile */
+            .main-nav {
                 display: none;
             }
 
             .swiper-slide {
                 width: 95vw;
+                min-width: 0; /* Override min-width for mobile */
             }
 
-            /* Hide dots on mobile */
             .swiper-pagination {
-                display: none;
+                /* display: none; */
             }
 
             #gallery-view {
                 height: calc(80vh - var(--header-height));
-                /* height: 10vh; */
-            }
-
-            /* Reduce top padding for about section on mobile */
-            #about-view {
-                padding-top: 4rem;
             }
         }
     </style>
@@ -317,16 +278,16 @@
 
 <body>
 
-    <!-- New Fixed Top Navigation Bar -->
+    <!-- Updated Fixed Top Navigation Bar -->
     <header class="main-header">
-        <nav class="main-nav">
-            <a href="#gallery-view" class="nav-link">WORK</a>
-            <a href="#about-view" class="nav-link">ABOUT/COMMISSIONS</a>
-        </nav>
         <a href="/" class="header-brand-container">
             <span class="header-brand">B. Van Besien</span>
             <span class="brand-subtitle">chiaroscuro portraiture</span>
         </a>
+        <nav class="main-nav">
+            <a href="#about-view" class="nav-link">About</a>
+            <a href="#contact-view" class="nav-link">Contact</a>
+        </nav>
     </header>
 
     <!-- Main content area -->
@@ -357,8 +318,8 @@
                     <div class="swiper-slide"><img src="sample/BVBWEB-3.jpg" alt="BVBWEB-3.jpg"></div>
                 </div>
                 <!-- Navigation Arrows -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <!-- <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div> -->
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
             </div>
@@ -366,11 +327,15 @@
 
         <section id="about-view">
             <div>
-                <h2>About the Work</h2>
+                <h2>About the Portraits</h2>
                 <p>This work is an exploration of presence, grounded in the classical tradition of chiaroscuro. Each
                     portrait is a collaboration, a quiet moment of observation intended to create a lasting and honest
                     image.</p>
-                <h2>Commissions</h2>
+            </div>
+        </section>
+        <section id="contact-view">
+            <div>
+                <h2>Contacts and Commissions</h2>
                 <p><i>Commissions start at $1,500.</i> For inquiries regarding sittings and collaborations, please
                     direct correspondence to <a href="mailto:bill@bvbportraits.com">bill@bvbportraits.com</a>.</p>
             </div>
@@ -385,15 +350,17 @@
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".mySwiper", {
-        // Core carousel settings
+        // Core carousel settings,
+        effect: "auto",
         slidesPerView: 'auto',
         centeredSlides: true,
         spaceBetween: 30, // Gap between images
+        speed: 1000,
         loop: true,
 
         // Autoplay
         autoplay: {
-            delay: 4000,
+            delay: 60000,
             disableOnInteraction: false,
         },
 
