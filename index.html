@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B&middot;V&middot;B Portraits | Washington, DC Legacy Photography</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
         rel="stylesheet">
-    <!-- <link
-        href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Bilbo+Swash+Caps&family=Birthstone&family=Corinthia:wght@400;700&family=Dr+Sugiyama&family=Italianno&family=Mr+Bedfort&family=Mr+Dafoe&family=Mrs+Saint+Delafield&family=Qwigley&display=swap"
-        rel="stylesheet"> -->
-
 
     <style>
         :root {
@@ -27,7 +24,6 @@
             --color-gold: #d4af37;
 
             --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
-            /* --font-header: "Italianno", cursive; */
             --font-body: Georgia, serif;
             --section-height: 100vh;
             --footer-height: 5rem;
@@ -140,7 +136,6 @@
             margin-bottom: 0;
         }
 
-
         header.site-title {
             position: absolute;
             bottom: 15vh;
@@ -209,7 +204,6 @@
             letter-spacing: 0.05em;
             color: var(--color-text-primary);
         }
-
 
         .content-wrapper {
             max-width: 65ch;
@@ -288,14 +282,14 @@
             <li><a href="#contact">Contact</a></li>
             <li><a href="#gallery">Gallery</a></li>
         </ul>
-        <hr />
+        <hr>
     </nav>
 
     <main>
         <section class="parallax-section" style="background-image: url('/gallery/BVB-0549.jpg');">
         </section>
 
-        <section id="" class="content-section">
+        <section class="content-section">
             <div class="content-wrapper">
                 <h2>B&middot;V&middot;B Portraits</h2>
                 <p class="subtitle">Fine art portraiture to stand the test of time.</p>
@@ -307,7 +301,7 @@
 
         <section id="about" class="content-section">
             <div class="content-wrapper">
-                <h2><a name="about"></a>About</h2>
+                <h2>About</h2>
                 <p>
                     Good portraiture creates images that become more captivating with time.
                     My great grandfather's portrait from a century ago possesses a timeless presence that inspired my
@@ -325,7 +319,8 @@
                     <i>Portrait commissions start at $1500</i>, including professional makeup and extended studio time.
                     Sessions are unhurried allowing for careful lighting and multiple setups.
                 </p>
-                <img src="/photos/Self1.jpg" style="max-height: 250px; margin: 2rem;" />
+                <img src="/photos/Self1.jpg" style="max-height: 250px; margin: 2rem;"
+                    alt="Self-portrait of the photgrapher">
                 <p> &mdash; Bill Van Besien</p>
             </div>
         </section>
@@ -342,13 +337,13 @@
 
                 <h3>Studio</h3>
                 <address>
-                    Union 206 Studios <br />
+                    Union 206 Studios <br>
                     <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
                         822 S Pickett St, Alexandria, VA 22304
                     </a>
                 </address>
 
-                <br />
+                <br>
                 <h3>Makeup Arists</h3>
                 <p>
                     Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
@@ -364,7 +359,7 @@
 
         <section id="gallery" class="content-section">
             <div class="content-wrapper">
-                <h2><a name="gallery"></a>Gallery</h2>
+                <h2>Gallery</h2>
             </div>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
@@ -394,25 +389,27 @@
 
                     <div class="swiper-pagination"></div>
                 </div>
-
+            </div>
         </section>
     </main>
 
     <footer class="main-footer">
         <div class="content-wrapper">
-            <hr />
+            <hr>
             <p>&copy; 2025 <a href="/">B&middot;V&middot;B Portraits</a>
-                <br />
+                <br>
                 822 S Pickett St, Alexandria, VA 22304
             </p>
             <p><a style="color: var(--color-accent);" onclick="toggleQR()">[ QR Code ]</a></p>
             <p id="qr-code" style="display: none;">
-                <img src="/resources/qr-code.png" id="qr-code" />
+                <img src="/resources/qr-code.png" style="max-width: 95vw;"
+                    alt="A QR code containing the link to this site.">
             </p>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // When QR code is expanded, scroll to view it.
         function toggleQR() {
             var qrCode = document.getElementById("qr-code");
             if (qrCode.style.display === "none") {
@@ -420,22 +417,19 @@
             } else {
                 qrCode.style.display = "none";
             }
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
         }
-        var currentYear = new Date().getFullYear();
+
+        // Set swiper to show prev and next
         var swiper = new Swiper(".mySwiper", {
-            // Core carousel settings
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 30, // Gap between images
             loop: true,
-
-            // Autoplay
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
             },
-
-            // Navigation & Pagination
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -447,32 +441,15 @@
         });
         swiper.el.onclick = () => swiper.slideNext();
 
-        // Wait for the document to be fully loaded
         document.addEventListener('DOMContentLoaded', () => {
-
-            // Find all your swiper slides
             document.querySelectorAll('.swiper-slide').forEach(slide => {
-
-                // Find the image inside the current slide
                 const img = slide.querySelector('img');
-
-                // If there's no image, skip to the next slide
                 if (!img) {
                     return;
                 }
-
-                // --- Create and configure the overlay element ---
-
-                // 1. Get the filename from the image's src
                 const filename = img.src.split('/').pop();
-
-                // 2. Create a new <div> element
                 const overlay = document.createElement('div');
-
-                // 3. Set its text content to be the filename
                 overlay.textContent = filename;
-
-                // 4. Apply all the styles directly with JavaScript
                 Object.assign(overlay.style, {
                     position: 'absolute',
                     bottom: '0',
@@ -485,13 +462,11 @@
                     fontSize: '14px',
                     textAlign: 'center',
                     boxSizing: 'border-box',
-                    pointerEvents: 'none', // Keeps the overlay from being clickable
+                    pointerEvents: 'none',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis'
                 });
-
-                // 5. Add the newly created overlay to the slide
                 slide.appendChild(overlay);
             });
         });
