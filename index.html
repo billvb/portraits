@@ -286,7 +286,7 @@
     </nav>
 
     <main>
-        <section class="parallax-section" style="background-image: url('/gallery/BVB-0549.jpg');">
+        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-21.jpg');">
         </section>
 
         <section class="content-section">
@@ -296,7 +296,7 @@
             </div>
         </section>
 
-        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-5.jpg');">
+        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-3.jpg');">
         </section>
 
         <section id="about" class="content-section">
@@ -325,7 +325,7 @@
             </div>
         </section>
 
-        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-17.jpg');">
+        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-16.jpg');">
         </section>
 
         <section id="contact" class="content-section">
@@ -354,7 +354,7 @@
             </div>
         </section>
 
-        <section class="parallax-section" style="background-image: url('/gallery/BVB-2107.jpg');">
+        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-9.jpg');">
         </section>
 
         <section id="gallery" class="content-section">
@@ -363,29 +363,16 @@
             </div>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-16.jpg" alt="BVBWEB-16.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-2228.jpg" alt="BVB-2228.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-1456.jpg" alt="BVB-1456.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-2.jpg" alt="BVBWEB-2.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-2239.jpg" alt="BVB-2239.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
+                    <div class="swiper-slide"><img src="/gallery/BVBWEB-17.jpg" alt="BVBWEB-17.jpg"></div>
                     <div class="swiper-slide"><img src="/gallery/BVBWEB-15.jpg" alt="BVBWEB-15.jpg"></div>
                     <div class="swiper-slide"><img src="/gallery/BVBWEB-14.jpg" alt="BVBWEB-14.jpg"></div>
                     <div class="swiper-slide"><img src="/gallery/BVBWEB-8.jpg" alt="BVBWEB-8.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-8186.jpg" alt="BVB-8186.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-13.jpg" alt="BVBWEB-13.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-17.jpg" alt="BVBWEB-17.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-0549.jpg" alt="BVB-0549.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-2527.jpg" alt="BVB-2527.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-9.jpg" alt="BVBWEB-9.jpg"></div>
                     <div class="swiper-slide"><img src="/gallery/BVBWEB-10.jpg" alt="BVBWEB-10.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-2529.jpg" alt="BVB-2529.jpg"></div>
                     <div class="swiper-slide"><img src="/gallery/BVBWEB-11.jpg" alt="BVBWEB-11.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-2229.jpg" alt="BVB-2229.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-18.jpg" alt="BVBWEB-18.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-2226.jpg" alt="BVB-2226.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVB-7405.jpg" alt="BVB-7405.jpg"></div>
-
+                    <div class="swiper-slide"><img src="/gallery/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div>
+                    <div class="swiper-slide"><img src="/gallery/BVBWEB-19.jpg" alt="BVBWEB-19.jpg"></div>
+                    <div class="swiper-slide"><img src="/gallery/BVBWEB-5.jpg" alt="BVBWEB-5.jpg"></div>
+                    <div class="swiper-slide"><img src="/gallery/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
 
                     <div class="swiper-pagination"></div>
                 </div>
@@ -441,8 +428,12 @@
         });
         swiper.el.onclick = () => swiper.slideNext();
 
+        let debug = false;
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.swiper-slide').forEach(slide => {
+                if (!debug) {
+                    return;
+                }
                 const img = slide.querySelector('img');
                 if (!img) {
                     return;
@@ -470,6 +461,29 @@
                 slide.appendChild(overlay);
             });
         });
+
+        (function () {
+            const API_URL = "https://41s7o277t1.execute-api.us-east-1.amazonaws.com/default/photoSiteLogs";
+
+            setTimeout(function () {
+                const params = new URLSearchParams({
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer || "",
+                    url: window.location.href,
+                    resolution: screen.width + 'x' + screen.height
+                });
+
+                fetch(API_URL + '?' + params.toString(), {
+                    method: 'GET',
+                    mode: 'cors',
+                    keepalive: false
+                }).then(() => {
+                    console.log("Acknowledged hit");
+                }).catch(() => {
+                    console.log("Failed to acknowledge hit");
+                });
+            }, 100);
+        })();
     </script>
 
 </body>
