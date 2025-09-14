@@ -1,0 +1,19 @@
+.DS_Store
+*.swp
+*.swo
+*.swn
+.vscode/
+._*
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*~
+node_modules/
+venv/
+__pycache__/
+*.pyc
+
+# GitHub Pages custom domain (preserve CNAME)
+!CNAME
+
