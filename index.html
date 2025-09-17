@@ -2,488 +2,487 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B&middot;V&middot;B Portraits | Washington, DC Legacy Photography</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B&middot;V&middot;B Portraits | Washington, DC Legacy Photography</title>
 
-    <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
-        rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
 
-    <style>
-        :root {
-            --color-background: #000;
-            --color-text-primary: #e0e0e0;
-            --color-text-secondary: #a0a0a0;
-            --color-accent: #b8ae9c;
-            --color-gold: #d4af37;
+  <style>
+    :root {
+      --color-background: #000;
+      --color-text-primary: #e0e0e0;
+      --color-text-secondary: #a0a0a0;
+      --color-accent: #b8ae9c;
+      --color-gold: #d4af37;
 
-            --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
-            --font-body: Georgia, serif;
-            --section-height: 100vh;
-            --footer-height: 5rem;
-        }
+      --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
+      --font-body: Georgia, serif;
+      --section-height: 100vh;
+      --footer-height: 5rem;
+    }
 
-        /* -- Global Resets & Base Styles -- */
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* -- Global Resets & Base Styles -- */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            background-color: var(--color-background);
-            color: var(--color-text-primary);
-            font-family: var(--font-body);
-            /* Updated body font */
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    body {
+      background-color: var(--color-background);
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      /* Updated body font */
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        p {
-            font-size: 1.2rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
-        }
+    p {
+      font-size: 1.2rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+    }
 
-        footer p {
-            font-size: 0.9rem;
-            ;
-        }
+    footer p {
+      font-size: 0.9rem;
+      ;
+    }
 
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-        }
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
 
-        a:hover,
-        a:focus {
-            border-bottom-color: var(--color-accent);
-        }
+    a:hover,
+    a:focus {
+      border-bottom-color: var(--color-accent);
+    }
 
-        hr {
-            height: 1px;
-            background: linear-gradient(to right,
-                    rgba(212, 175, 55, 0),
-                    rgba(212, 175, 55, 0.6),
-                    rgba(212, 175, 55, 0));
-            margin: 0;
-            width: 25%;
-            min-width: 250px;
-            margin-left: auto;
-            margin-right: auto;
-            border: none;
-        }
+    hr {
+      height: 1px;
+      background: linear-gradient(to right,
+          rgba(212, 175, 55, 0),
+          rgba(212, 175, 55, 0.6),
+          rgba(212, 175, 55, 0));
+      margin: 0;
+      width: 25%;
+      min-width: 250px;
+      margin-left: auto;
+      margin-right: auto;
+      border: none;
+    }
 
-        nav {
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 30%);
-        }
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 30%);
+    }
 
-        nav ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            gap: 3rem;
-            justify-content: center;
-            text-align: center;
-        }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      text-align: center;
+    }
 
-        nav a {
-            display: block;
-            padding: 1.5rem 0.75rem;
-            text-decoration: none;
-            line-height: 1;
-            border-radius: 0.375rem;
-            font-size: 1.55rem;
-            color: var(--color-text-primary);
-            font-family: var(--font-header);
-            font-weight: 100;
-            letter-spacing: 0.05rem;
-            transition: color 0.3s ease;
-            border: 0;
-        }
+    nav a {
+      display: block;
+      padding: 1.5rem 0.75rem;
+      text-decoration: none;
+      line-height: 1;
+      border-radius: 0.375rem;
+      font-size: 1.55rem;
+      color: var(--color-text-primary);
+      font-family: var(--font-header);
+      font-weight: 100;
+      letter-spacing: 0.05rem;
+      transition: color 0.3s ease;
+      border: 0;
+    }
 
-        nav a:hover {
-            color: var(--color-accent);
-        }
+    nav a:hover {
+      color: var(--color-accent);
+    }
 
-        nav a:focus-visible {
-            /* outline: 2px solid var(--color-accent);
+    nav a:focus-visible {
+      /* outline: 2px solid var(--color-accent);
             outline-offset: 2px; */
-        }
+    }
 
-        main {
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
+    main {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
 
-        header.site-title {
-            position: absolute;
-            bottom: 15vh;
+    header.site-title {
+      position: absolute;
+      bottom: 15vh;
 
-            left: 0;
-            z-index: 11;
-            width: 100%;
-            text-align: center;
+      left: 0;
+      z-index: 11;
+      width: 100%;
+      text-align: center;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        header.site-title h1 {
-            font-family: "Dr Sugiyama", "Cormorant Garamond", cursive;
-            font-size: 3.35rem;
-            letter-spacing: 0;
-            color: rgba(240, 230, 220, 0.99);
-            line-height: 1.0;
-            /* Add breathing room for the two lines */
-            font-weight: 400;
-            margin: 1.5rem 0 0.0rem 0;
-        }
+    header.site-title h1 {
+      font-family: "Dr Sugiyama", "Cormorant Garamond", cursive;
+      font-size: 3.35rem;
+      letter-spacing: 0;
+      color: rgba(240, 230, 220, 0.99);
+      line-height: 1.0;
+      /* Add breathing room for the two lines */
+      font-weight: 400;
+      margin: 1.5rem 0 0.0rem 0;
+    }
 
-        header.site-title p.subtitle {
-            font-family: var(--font-header);
-            font-size: 1.45rem;
-            color: rgba(240, 230, 220, 0.8);
-            font-weight: 400;
-        }
+    header.site-title p.subtitle {
+      font-family: var(--font-header);
+      font-size: 1.45rem;
+      color: rgba(240, 230, 220, 0.8);
+      font-weight: 400;
+    }
 
-        .site-title hr {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
+    .site-title hr {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
 
-        .parallax-section {
-            height: var(--section-height);
-            position: relative;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-color: #000;
-        }
+    .parallax-section {
+      height: var(--section-height);
+      position: relative;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #000;
+    }
 
-        .content-section {
-            padding: 5rem 2rem;
-            background-color: var(--color-background);
-            position: relative;
-            /* Ensures it scrolls OVER the fixed backgrounds */
-            z-index: 1;
-        }
+    .content-section {
+      padding: 5rem 2rem;
+      background-color: var(--color-background);
+      position: relative;
+      /* Ensures it scrolls OVER the fixed backgrounds */
+      z-index: 1;
+    }
 
-        .content-section:last-child {
-            padding-bottom: 0;
-        }
+    .content-section:last-child {
+      padding-bottom: 0;
+    }
 
-        .content-section h2 {
-            font-family: var(--font-header);
-            font-weight: 400;
-            font-size: clamp(1.75rem, 4vw, 2rem);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.05em;
-            color: var(--color-text-primary);
-        }
+    .content-section h2 {
+      font-family: var(--font-header);
+      font-weight: 400;
+      font-size: clamp(1.75rem, 4vw, 2rem);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--color-text-primary);
+    }
 
-        .content-wrapper {
-            max-width: 65ch;
-            margin: 0 auto;
-            text-align: center;
-        }
+    .content-wrapper {
+      max-width: 65ch;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-        .swiper-wrapper {
-            align-items: center;
-        }
+    .swiper-wrapper {
+      align-items: center;
+    }
 
-        .swiper {
-            width: 100%;
-            height: 78vh;
-            padding: 0 40px;
-        }
+    .swiper {
+      width: 100%;
+      height: 78vh;
+      padding: 0 40px;
+    }
 
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            width: 30vw;
-            min-width: 450px;
-            align-items: center;
-            background-color: #000;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            transform: scale(0.8);
-            opacity: 0.25;
-        }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      width: 30vw;
+      min-width: 450px;
+      align-items: center;
+      background-color: #000;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      transform: scale(0.8);
+      opacity: 0.25;
+    }
 
-        .swiper-slide-active {
-            transform: scale(1);
-            opacity: 1;
-        }
+    .swiper-slide-active {
+      transform: scale(1);
+      opacity: 1;
+    }
 
-        .swiper-slide img {
-            display: block;
-            width: auto;
-            height: auto;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+    .swiper-slide img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
 
-        .swiper-pagination-bullet {
-            opacity: 0.10;
-            background: var(--color-gold);
-            width: 8px;
-            height: 8px;
-            margin: 0 8px;
-        }
+    .swiper-pagination-bullet {
+      opacity: 0.10;
+      background: var(--color-gold);
+      width: 8px;
+      height: 8px;
+      margin: 0 8px;
+    }
 
-        .swiper-pagination-bullet-active {
-            opacity: 0.5;
-        }
+    .swiper-pagination-bullet-active {
+      opacity: 0.5;
+    }
 
-        .wordmark {
-            width: clamp(300px, 55vh, 95vw);
-            height: 8rem;
-            background: var(--color-text-primary);
-            image-rendering: auto;
-            -webkit-mask: url(/resources/signature-2b.png) no-repeat center / contain;
-            mask: url(/resources/signature-2b.png) no-repeat center / contain;
-        }
-    </style>
+    .wordmark {
+      width: clamp(300px, 55vh, 95vw);
+      height: 8rem;
+      background: var(--color-text-primary);
+      image-rendering: auto;
+      -webkit-mask: url(/resources/signature-2b.png) no-repeat center / contain;
+      mask: url(/resources/signature-2b.png) no-repeat center / contain;
+    }
+  </style>
 </head>
 
 <body>
-    <header class="site-title">
-        <h1 class="wordmark"></h1>
-        <p class="subtitle">chiaroscuro portraiture</p>
-    </header>
+  <header class="site-title">
+    <h1 class="wordmark"></h1>
+    <p class="subtitle">chiaroscuro portraiture</p>
+  </header>
 
-    <nav aria-label="Main">
-        <ul class="nav">
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-        </ul>
-        <hr>
-    </nav>
+  <nav aria-label="Main">
+    <ul class="nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+    </ul>
+    <hr>
+  </nav>
 
-    <main>
-        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-21.jpg');">
-        </section>
+  <main>
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-21.jpg');">
+    </section>
 
-        <section class="content-section">
-            <div class="content-wrapper">
-                <h2>B&middot;V&middot;B Portraits</h2>
-                <p class="subtitle">Fine art portraiture to stand the test of time.</p>
-            </div>
-        </section>
+    <section class="content-section">
+      <div class="content-wrapper">
+        <h2>B&middot;V&middot;B Portraits</h2>
+        <p class="subtitle">Fine art portraiture to stand the test of time.</p>
+      </div>
+    </section>
 
-        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-3.jpg');">
-        </section>
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-3.jpg');">
+    </section>
 
-        <section id="about" class="content-section">
-            <div class="content-wrapper">
-                <h2>About</h2>
-                <p>
-                    I approach portraiture through the practice of <em>chiaroscuro</em>, using light to sculpt the form and presence of the subject.
-                    The technique is rooted in classical painting rather than contemporary photography, where the subject and photographer render images through intention rather than capturing instants.                    
-                </p>
-                <p>
-                    Each image exists as an art object first, where subjects discover themselves through a particular aesthetic vision.
-                    The work is designed to endure through generations, gaining meaning with time.
-                    Good portraiture only improves with age.
-                </p>
-                <p>
-                    <i>Portrait commissions start at $1800</i>, including professional makeup and extended studio time.
-                    Sessions are unhurried and allow the session to unfold at its own pace.
-                </p>
-                <img src="/resources/Self1.jpg" style="max-height: 250px; margin: 2rem;"
-                    alt="Self-portrait of the photgrapher">
-                <p> &mdash; Bill Van Besien</p>
-            </div>
-        </section>
+    <section id="about" class="content-section">
+      <div class="content-wrapper">
+        <h2>About</h2>
+        <p>
+          I approach portraiture with a <em>chiaroscuro</em> style, using light to sculpt the form and presence of the
+          subject.
+          The technique is rooted in classical painting rather than contemporary photography.
+          Sessions often feel slower-paced and more deliberate, like sitting for a painting.
+        </p>
+        <p>
+          The images are built to last generations.
+          They get better with age, like my great grandfather's portrait that still hangs in our home after a century.
+          That's the standard I work toward.
+        </p>
+        <p>
+          <i>Portrait commissions start at $1800</i>, including professional makeup and extended studio time.
+          Sessions take the time they need, and unfold at their own pace.
+        </p>
+        <img src="/resources/Self1.jpg" style="max-height: 250px; margin: 2rem;" alt="Self-portrait of the photgrapher">
+        <p> &mdash; Bill Van Besien</p>
+      </div>
+    </section>
 
-        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-16.jpg');">
-        </section>
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-16.jpg');">
+    </section>
 
-        <section id="contact" class="content-section">
-            <div class="content-wrapper">
-                <h2>Contact</h2>
+    <section id="contact" class="content-section">
+      <div class="content-wrapper">
+        <h2>Contact</h2>
 
-                <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
-                        href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
+        <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
+            href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
 
-                <h3>Studio</h3>
-                <address>
-                    Union 206 Studios <br>
-                    <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
-                        822 S Pickett St, Alexandria, VA 22304
-                    </a>
-                </address>
+        <h3>Studio</h3>
+        <address>
+          Union 206 Studios <br>
+          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
+            822 S Pickett St, Alexandria, VA 22304
+          </a>
+        </address>
 
-                <br>
-                <h3>Makeup Arists</h3>
-                <p>
-                    Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-                    optimal results.
-                    I work with several experienced makeup artists and can connect you with the right one for your
-                    portraits.
-                </p>
-            </div>
-        </section>
+        <br>
+        <h3>Makeup Arists</h3>
+        <p>
+          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
+          optimal results.
+          I work with several experienced makeup artists and can connect you with the right one for your
+          portraits.
+        </p>
+      </div>
+    </section>
 
-        <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-9.jpg');">
-        </section>
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-9.jpg');">
+    </section>
 
-        <section id="gallery" class="content-section">
-            <div class="content-wrapper">
-                <h2>Gallery</h2>
-            </div>
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-17.jpg" alt="BVBWEB-17.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-15.jpg" alt="BVBWEB-15.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-14.jpg" alt="BVBWEB-14.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-8.jpg" alt="BVBWEB-8.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-10.jpg" alt="BVBWEB-10.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-11.jpg" alt="BVBWEB-11.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-19.jpg" alt="BVBWEB-19.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-5.jpg" alt="BVBWEB-5.jpg"></div>
-                    <div class="swiper-slide"><img src="/gallery/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
+    <section id="gallery" class="content-section">
+      <div class="content-wrapper">
+        <h2>Gallery</h2>
+      </div>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-17.jpg" alt="BVBWEB-17.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-15.jpg" alt="BVBWEB-15.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-14.jpg" alt="BVBWEB-14.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-8.jpg" alt="BVBWEB-8.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-10.jpg" alt="BVBWEB-10.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-11.jpg" alt="BVBWEB-11.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-19.jpg" alt="BVBWEB-19.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-5.jpg" alt="BVBWEB-5.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
 
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="main-footer">
-        <div class="content-wrapper">
-            <hr>
-            <p>&copy; 2025 <a href="/">B&middot;V&middot;B Portraits</a>
-                <br>
-                822 S Pickett St, Alexandria, VA 22304
-            </p>
-            <p><a style="color: var(--color-accent);" onclick="toggleQR()">[ QR Code ]</a></p>
-            <p id="qr-code" style="display: none;">
-                <img src="/resources/qr-code.png" style="max-width: 95vw;"
-                    alt="A QR code containing the link to this site.">
-            </p>
+          <div class="swiper-pagination"></div>
         </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // When QR code is expanded, scroll to view it.
-        function toggleQR() {
-            var qrCode = document.getElementById("qr-code");
-            if (qrCode.style.display === "none") {
-                qrCode.style.display = "block";
-            } else {
-                qrCode.style.display = "none";
-            }
-            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="content-wrapper">
+      <hr>
+      <p>&copy; 2025 <a href="/">B&middot;V&middot;B Portraits</a>
+        <br>
+        822 S Pickett St, Alexandria, VA 22304
+      </p>
+      <p><a style="color: var(--color-accent);" onclick="toggleQR()">[ QR Code ]</a></p>
+      <p id="qr-code" style="display: none;">
+        <img src="/resources/qr-code.png" style="max-width: 95vw;" alt="A QR code containing the link to this site.">
+      </p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // When QR code is expanded, scroll to view it.
+    function toggleQR() {
+      var qrCode = document.getElementById("qr-code");
+      if (qrCode.style.display === "none") {
+        qrCode.style.display = "block";
+      } else {
+        qrCode.style.display = "none";
+      }
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+
+    // Set swiper to show prev and next
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      spaceBetween: 30, // Gap between images
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+    swiper.el.onclick = () => swiper.slideNext();
+
+    let debug = false;
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.swiper-slide').forEach(slide => {
+        if (!debug) {
+          return;
         }
-
-        // Set swiper to show prev and next
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            spaceBetween: 30, // Gap between images
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+        const img = slide.querySelector('img');
+        if (!img) {
+          return;
+        }
+        const filename = img.src.split('/').pop();
+        const overlay = document.createElement('div');
+        overlay.textContent = filename;
+        Object.assign(overlay.style, {
+          position: 'absolute',
+          bottom: '0',
+          left: '0',
+          width: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          color: 'white',
+          padding: '5px 10px',
+          fontFamily: 'monospace',
+          fontSize: '14px',
+          textAlign: 'center',
+          boxSizing: 'border-box',
+          pointerEvents: 'none',
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis'
         });
-        swiper.el.onclick = () => swiper.slideNext();
+        slide.appendChild(overlay);
+      });
+    });
 
-        let debug = false;
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.swiper-slide').forEach(slide => {
-                if (!debug) {
-                    return;
-                }
-                const img = slide.querySelector('img');
-                if (!img) {
-                    return;
-                }
-                const filename = img.src.split('/').pop();
-                const overlay = document.createElement('div');
-                overlay.textContent = filename;
-                Object.assign(overlay.style, {
-                    position: 'absolute',
-                    bottom: '0',
-                    left: '0',
-                    width: '100%',
-                    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                    color: 'white',
-                    padding: '5px 10px',
-                    fontFamily: 'monospace',
-                    fontSize: '14px',
-                    textAlign: 'center',
-                    boxSizing: 'border-box',
-                    pointerEvents: 'none',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
-                });
-                slide.appendChild(overlay);
-            });
+    (function () {
+      const API_URL = "https://41s7o277t1.execute-api.us-east-1.amazonaws.com/default/photoSiteLogs";
+
+      setTimeout(function () {
+        const params = new URLSearchParams({
+          userAgent: navigator.userAgent,
+          referrer: document.referrer || "",
+          url: window.location.href,
+          resolution: screen.width + 'x' + screen.height
         });
 
-        (function () {
-            const API_URL = "https://41s7o277t1.execute-api.us-east-1.amazonaws.com/default/photoSiteLogs";
-
-            setTimeout(function () {
-                const params = new URLSearchParams({
-                    userAgent: navigator.userAgent,
-                    referrer: document.referrer || "",
-                    url: window.location.href,
-                    resolution: screen.width + 'x' + screen.height
-                });
-
-                fetch(API_URL + '?' + params.toString(), {
-                    method: 'GET',
-                    mode: 'cors',
-                    keepalive: false
-                }).then(() => {
-                    console.log("Acknowledged hit");
-                }).catch(() => {
-                    console.log("Failed to acknowledge hit");
-                });
-            }, 100);
-        })();
-    </script>
+        fetch(API_URL + '?' + params.toString(), {
+          method: 'GET',
+          mode: 'cors',
+          keepalive: false
+        }).then(() => {
+          console.log("Acknowledged hit");
+        }).catch(() => {
+          console.log("Failed to acknowledge hit");
+        });
+      }, 100);
+    })();
+  </script>
 
 </body>
 
 
 </html>
-
