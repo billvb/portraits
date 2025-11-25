@@ -17,3 +17,5 @@ __pycache__/
 # GitHub Pages custom domain (preserve CNAME)
 !CNAME
 
+*.csv
+
