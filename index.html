@@ -16,17 +16,21 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
     rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;400&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
       --color-background: #000;
       --color-text-primary: #e0e0e0;
       --color-text-secondary: #a0a0a0;
-      --color-accent: #b8ae9c;
+      --color-accent: #bfaea8;
       --color-gold: #d4af37;
 
+
       --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
-      --font-body: Georgia, serif;
+      --font-body: 'Montserrat', sans-serif;
       --section-height: 100vh;
       --footer-height: 5rem;
     }
@@ -62,7 +66,6 @@
 
     footer p {
       font-size: 0.9rem;
-      ;
     }
 
     a {
@@ -96,7 +99,9 @@
       top: 0;
       width: 100%;
       z-index: 100;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 30%);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 20%);
+      font-family: var(--font-header);
+      font-weight: 100;
     }
 
     nav ul {
@@ -104,33 +109,25 @@
       padding: 0;
       list-style: none;
       display: flex;
-      gap: 3rem;
       justify-content: center;
       text-align: center;
     }
 
-    nav a {
+    nav ul li {
       display: block;
       padding: 1.5rem 0.75rem;
+      letter-spacing: 0.2rem;
+    }
+
+    nav a {
       text-decoration: none;
-      line-height: 1;
-      border-radius: 0.375rem;
-      font-size: 1.55rem;
-      color: var(--color-text-primary);
-      font-family: var(--font-header);
-      font-weight: 100;
-      letter-spacing: 0.05rem;
-      transition: color 0.3s ease;
-      border: 0;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      transition: color 0.25s ease;
     }
 
     nav a:hover {
-      color: var(--color-accent);
-    }
-
-    nav a:focus-visible {
-      /* outline: 2px solid var(--color-accent);
-            outline-offset: 2px; */
+      color: #fff;
     }
 
     main {
@@ -142,6 +139,7 @@
       position: absolute;
       bottom: 15vh;
 
+      margin-top: 50vh;
       left: 0;
       z-index: 11;
       width: 100%;
@@ -176,6 +174,11 @@
       margin-bottom: 1rem;
     }
 
+    .site-title a {
+      border-top: 1px solid var(--color-accent);
+      border-bottom: 1px solid var(--color-accent);
+    }
+
     .parallax-section {
       height: var(--section-height);
       position: relative;
@@ -183,23 +186,34 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
-      background-color: #000;
+      background-color: var(--color-background);
     }
 
     .content-section {
       padding: 5rem 2rem;
       background-color: var(--color-background);
-      position: relative;
+      /* position: relative; */
       /* Ensures it scrolls OVER the fixed backgrounds */
       z-index: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 5rem;
     }
 
     .content-section:last-child {
       padding-bottom: 0;
     }
 
-    .content-section h2 {
+    .content-section h1,
+    .content-section h2,
+    .content-section h3 {
       font-family: var(--font-header);
+    }
+
+    .content-section h2 {
       font-weight: 400;
       font-size: clamp(1.75rem, 4vw, 2rem);
       margin-bottom: 1.5rem;
@@ -209,8 +223,8 @@
 
     .content-wrapper {
       max-width: 65ch;
-      margin: 0 auto;
-      text-align: center;
+      margin: 0;
+      /* text-align: center; */
     }
 
     .swiper-wrapper {
@@ -262,6 +276,7 @@
     }
 
     .wordmark {
+
       width: clamp(300px, 55vh, 95vw);
       height: 8rem;
       background: var(--color-text-primary);
@@ -273,32 +288,82 @@
 </head>
 
 <body>
-  <header class="site-title">
-    <h1 class="wordmark"></h1>
-    <p class="subtitle">chiaroscuro portraiture</p>
-  </header>
-
-  <nav aria-label="Main">
-    <ul class="nav">
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-    </ul>
-    <hr>
-  </nav>
-
   <main>
-    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-21.jpg');">
+    <header class="site-title">
+      <h1 class="wordmark"></h1>
+      <p class="subtitle">chiaroscuro portraiture</p>
+      <p><a href="#about">Inquiries</a></p>
+    </header>
+
+    <section class="parallax-section" style="background-image: url('/gallery/Fon-1.jpg');">
     </section>
+
+    <nav aria-label="Main">
+      <ul class="nav">
+        <li>BVB Portraits.</li>
+        <!-- <li><a href="#about">About</a></li> -->
+        <li><a href="#contact">Commissions</a></li>
+        <li><a href="#gallery">Works</a></li>
+      </ul>
+      <hr>
+    </nav>
+
+
+
 
     <section class="content-section">
       <div class="content-wrapper">
-        <h2>B&middot;V&middot;B Portraits</h2>
-        <p class="subtitle">Fine art portraiture to stand the test of time.</p>
+        <h2>About</h2>
+        <p>
+          I enjoy working with individuals who are seeking timeless, painterly portraits to honor their legacies.
+          Many of my subjects seek to mark important life milestones, resilience through adversity, or simply because
+          the time feels right.
+        </p>
+        <p>
+          Portraiture sessions are most often conducted at my studio space in Alexandria, VA.
+          Sessions are unhurried and unfold at their own pace.
+          Subjects can expect to spend between two-to-four hours at the studio.
+          My availability is limited to a few occasions per month.
+        </p>
+        <p>
+          The portraits are meant to last generations, and offer a striking glimpse of the subject's presence and
+          character.
+          Like my great-grandfather's portrait that retains its charge after a century, the work gets better with age.
+        </p>
+        <p>
+          <i>Commissions start at $1800</i>, including professional makeup and archival-grade framed prints.
+        </p>
+        <img src="/resources/Self1.jpg" style="max-height: 250px; margin: 2rem;" alt="Self-portrait of the photgrapher">
+        <p> &mdash; Bill Van Besien</p>
+      </div>
+      <div class="content-wrapper">
+        <h2>Contact</h2>
+
+        <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
+            href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
+
+        <h3>Studio</h3>
+        <address>
+          Union 206 Studios <br>
+          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
+            822 S Pickett St, Alexandria, VA 22304
+          </a>
+        </address>
+
+        <br>
+        <h3>Makeup Arists</h3>
+        <p>
+          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
+          optimal results.
+          I work with several experienced makeup artists and can connect you with the right one for your
+          portraits.
+        </p>
       </div>
     </section>
 
-    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-3.jpg');">
+    <!-- <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-3.jpg');">
+    </section> -->
+    <section class="parallax-section" style="background-image: url('/gallery/RN-1.jpg');">
     </section>
 
     <section id="about" class="content-section">
