@@ -19,6 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;400&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -29,6 +30,7 @@
       --color-gold: #d4af37;
 
 
+      --font-title: 'Cinzel', serif;
       --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
       --font-body: 'Montserrat', sans-serif;
       --section-height: 100vh;
@@ -163,7 +165,8 @@
     }
 
     header.site-title p.subtitle {
-      font-family: var(--font-header);
+      font-family: var(--font-title);
+      letter-spacing: 0.5em;
       font-size: 1.45rem;
       color: rgba(240, 230, 220, 0.8);
       font-weight: 400;
@@ -175,8 +178,17 @@
     }
 
     .site-title a {
-      border-top: 1px solid var(--color-accent);
-      border-bottom: 1px solid var(--color-accent);
+      font-family: var(--font-title);
+      padding: 1rem;
+      background-color: rgb(from var(--color-accent) r g b / 0.1);
+      border: 1px solid rgb(from var(--color-accent) r g b / 0.2);
+      border-radius: 1rem;;
+      border-top: 0;
+      border-bottom: 0;
+    }
+
+    .site-title a:hover {
+      color: var(--color-text-primary);
     }
 
     .parallax-section {
@@ -291,8 +303,8 @@
   <main>
     <header class="site-title">
       <h1 class="wordmark"></h1>
-      <p class="subtitle">chiaroscuro portraiture</p>
-      <p><a href="#about">Inquiries</a></p>
+      <p class="subtitle">Portraiture</p>
+      <p><a href="#about">Commissions</a></p>
     </header>
 
     <section class="parallax-section" style="background-image: url('/gallery/Fon-1.jpg');">
@@ -300,10 +312,11 @@
 
     <nav aria-label="Main">
       <ul class="nav">
-        <li>BVB Portraits.</li>
+        <!-- <li>BVB Portraits.</li> -->
         <!-- <li><a href="#about">About</a></li> -->
-        <li><a href="#contact">Commissions</a></li>
+        <li><a href="#contact">Intro</a></li>
         <li><a href="#gallery">Works</a></li>
+        <li><a href="#gallery">Process</a></li>
       </ul>
       <hr>
     </nav>
