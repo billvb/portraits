@@ -10,7 +10,9 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -23,21 +25,40 @@
 
   <style>
     :root {
-      --color-background: #000;
-      --color-text-primary: #e0e0e0;
-      --color-text-secondary: #a0a0a0;
+      --color-white: rgb(255, 255, 255);
       --color-accent: #bfaea8;
       --color-gold: #d4af37;
+
+      --color-background: #030303;
+      --color-text-header: #e0e0e0;
+      --color-text-body: #a0a0a0;
+      --color-text-link: var(--color-accent);
+      --color-text-hover: var(--color-white);
 
 
       --font-title: 'Cinzel', serif;
       --font-header: 'Cormorant Garamond', 'Palatino Linotype', Palatino, serif;
       --font-body: 'Montserrat', sans-serif;
-      --section-height: 100vh;
+      --section-height: 100svh;
       --footer-height: 5rem;
+
+      --duration-xs: 0.1s;
+      --duration-s: 0.16s;
+      --duration-m: 0.25s;
+      --duration-l: 0.41s;
+      --duration-xl: 0.66s;
+
+      --swiper-theme-color: var(--color-gold);
+      --swiper-navigation-size: 30px;
+
+      font-size: 112.5%;
+
+      @media (max-width: 768px) {
+        font-size: 100%;
+        /* Drop back to 16px. Everything shrinks ~12% */
+      }
     }
 
-    /* -- Global Resets & Base Styles -- */
     *,
     *::before,
     *::after {
@@ -52,41 +73,61 @@
 
     body {
       background-color: var(--color-background);
-      color: var(--color-text-primary);
+      color: var(--color-text-body);
       font-family: var(--font-body);
-      /* Updated body font */
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 100;
+      font-family: var(--font-header);
+      color: var(--color-text-header);
+      letter-spacing: 0.156em;
+    }
+
+    h1 {
+      font-size: 4.17rem;
+    }
+
+    h2 {
+      font-size: 2.6rem;
+    }
+
+    h3 {
+      font-size: 1.6rem;
+    }
+
     p {
-      font-size: 1.2rem;
-      color: var(--color-text-secondary);
+      color: var(--color-text-body);
+      max-width: 60ch;
       margin-bottom: 1rem;
     }
 
-    footer p {
-      font-size: 0.9rem;
-    }
-
     a {
-      color: var(--color-accent);
-      text-decoration: none;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.3s ease;
+      color: var(--color-text-link);
+      text-decoration: none;
     }
 
     a:hover,
     a:focus {
       border-bottom-color: var(--color-accent);
+      color: var(--color-text-hover);
+      transition: color var(--duration-s) ease;
     }
 
     hr {
       height: 1px;
       background: linear-gradient(to right,
           rgba(212, 175, 55, 0),
-          rgba(212, 175, 55, 0.6),
+          rgb(from var(--color-gold) r g b / 0.6),
           rgba(212, 175, 55, 0));
       margin: 0;
       width: 25%;
@@ -101,110 +142,115 @@
       top: 0;
       width: 100%;
       z-index: 100;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 20%);
-      font-family: var(--font-header);
-      font-weight: 100;
-    }
-
-    nav ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+      background: linear-gradient(to bottom, var(--color-background) 50%, transparent);
       display: flex;
       justify-content: center;
-      text-align: center;
+
+      & a {
+        font-size: 1.1rem;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        color: var(--color-text-link);
+      }
     }
 
-    nav ul li {
+    nav::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: "";
+      height: 1px;
+      width: 100%;
+
       display: block;
-      padding: 1.5rem 0.75rem;
-      letter-spacing: 0.2rem;
+      z-index: 102;
+      background: linear-gradient(to right,
+          rgba(212, 175, 55, 0),
+          rgb(from var(--color-gold) r g b / 0.6),
+          rgba(212, 175, 55, 0));
     }
 
-    nav a {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      transition: color 0.25s ease;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
 
     main {
       padding-bottom: 0;
       margin-bottom: 0;
     }
 
-    header.site-title {
+    .site-title {
       position: absolute;
       bottom: 15vh;
-
-      margin-top: 50vh;
       left: 0;
-      z-index: 11;
+      z-index: 101;
       width: 100%;
       text-align: center;
-
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-    }
 
-    header.site-title h1 {
-      font-family: "Dr Sugiyama", "Cormorant Garamond", cursive;
-      font-size: 3.35rem;
-      letter-spacing: 0;
-      color: rgba(240, 230, 220, 0.99);
-      line-height: 1.0;
-      /* Add breathing room for the two lines */
-      font-weight: 400;
-      margin: 1.5rem 0 0.0rem 0;
-    }
+      & .wordmark {
+        color: rgba(240, 230, 220, 0.99);
+        width: clamp(300px, 55vh, 95vw);
+        height: 8rem;
+        background: var(--color-white);
+        image-rendering: auto;
 
-    header.site-title p.subtitle {
-      font-family: var(--font-title);
-      letter-spacing: 0.5em;
-      font-size: 1.45rem;
-      color: rgba(240, 230, 220, 0.8);
-      font-weight: 400;
-    }
+        -webkit-mask-image: url(/resources/signature-2b.png);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
 
-    .site-title hr {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
+        /* Firefox / Standard */
+        mask-image: url(/resources/signature-2b.png);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+      }
 
-    .site-title a {
-      font-family: var(--font-title);
-      padding: 1rem;
-      background-color: rgb(from var(--color-accent) r g b / 0.1);
-      border: 1px solid rgb(from var(--color-accent) r g b / 0.2);
-      border-radius: 1rem;;
-      border-top: 0;
-      border-bottom: 0;
-    }
+      & .subtitle {
+        font-family: var(--font-title);
+        letter-spacing: 0.5em;
+        font-size: 1.61rem;
+        color: rgba(240, 230, 220, 0.8);
+        font-weight: 400;
+      }
 
-    .site-title a:hover {
-      color: var(--color-text-primary);
+      & a {
+        font-size: 1rem;
+        letter-spacing: 0.25em;
+        font-family: var(--font-body);
+        text-transform: uppercase;
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: rgb(from var(--color-accent) r g b / 0.0);
+        border: 1px solid rgb(from var(--color-accent) r g b / 0.2);
+        border-radius: 0.1rem;
+      }
     }
 
     .parallax-section {
       height: var(--section-height);
+      height: 100svh;
       position: relative;
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
       background-color: var(--color-background);
+
+      @media (max-width: 768px) {
+        background-attachment: scroll;
+        background-size: cover;
+      }
     }
 
     .content-section {
       padding: 5rem 2rem;
       background-color: var(--color-background);
-      /* position: relative; */
       /* Ensures it scrolls OVER the fixed backgrounds */
       z-index: 1;
       display: flex;
@@ -213,52 +259,49 @@
       justify-content: center;
       align-items: flex-start;
       gap: 5rem;
+
+      & .content-wrapper {
+        max-width: 65ch;
+        margin: 0;
+      }
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
 
-    .content-section:last-child {
-      padding-bottom: 0;
+    footer {
+      text-align: center;
     }
 
-    .content-section h1,
-    .content-section h2,
-    .content-section h3 {
-      font-family: var(--font-header);
-    }
-
-    .content-section h2 {
-      font-weight: 400;
-      font-size: clamp(1.75rem, 4vw, 2rem);
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.05em;
-      color: var(--color-text-primary);
-    }
-
-    .content-wrapper {
-      max-width: 65ch;
-      margin: 0;
-      /* text-align: center; */
+    .swiper {
+      height: 95vh;
+      width: 100%;
+      position: relative;
     }
 
     .swiper-wrapper {
       align-items: center;
-    }
-
-    .swiper {
-      width: 100%;
-      height: 78vh;
-      padding: 0 40px;
+      overflow: visible;
     }
 
     .swiper-slide {
+      height: 100%;
+      width: auto;
       display: flex;
       justify-content: center;
-      width: 30vw;
-      min-width: 450px;
       align-items: center;
-      background-color: #000;
       transition: transform 0.4s ease, opacity 0.4s ease;
-      transform: scale(0.8);
       opacity: 0.25;
+    }
+
+    .swiper-slide img {
+      display: block;
+      height: 100%;
+      width: auto;
+      max-width: 90vw;
+      object-fit: contain;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
     }
 
     .swiper-slide-active {
@@ -266,77 +309,47 @@
       opacity: 1;
     }
 
-    .swiper-slide img {
-      display: block;
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    .swiper-pagination {
+      position: absolute;
+      bottom: 10px !important;
     }
 
     .swiper-pagination-bullet {
-      opacity: 0.10;
-      background: var(--color-gold);
-      width: 8px;
-      height: 8px;
-      margin: 0 8px;
+      background-color: rgba(0, 0, 0, 0);
+      border: 2px solid var(--color-accent);
+      border-radius: 2px;
     }
 
-    .swiper-pagination-bullet-active {
-      opacity: 0.5;
-    }
-
-    .wordmark {
-
-      width: clamp(300px, 55vh, 95vw);
-      height: 8rem;
-      background: var(--color-text-primary);
-      image-rendering: auto;
-      -webkit-mask: url(/resources/signature-2b.png) no-repeat center / contain;
-      mask: url(/resources/signature-2b.png) no-repeat center / contain;
-    }
+    .swiper-pagination-bullet-active {}
   </style>
 </head>
 
 <body>
   <main>
     <header class="site-title">
-      <h1 class="wordmark"></h1>
+      <div class="wordmark"></div>
       <p class="subtitle">Portraiture</p>
-      <p><a href="#about">Commissions</a></p>
+      <a href="#about">Intro</a>
     </header>
 
     <section class="parallax-section" style="background-image: url('/gallery/Fon-1.jpg');">
     </section>
 
     <nav aria-label="Main">
-      <ul class="nav">
-        <!-- <li>BVB Portraits.</li> -->
-        <!-- <li><a href="#about">About</a></li> -->
-        <li><a href="#contact">Intro</a></li>
-        <li><a href="#gallery">Works</a></li>
-        <li><a href="#gallery">Process</a></li>
-      </ul>
-      <hr>
+      <a href="#about" aria-label="Introduction">Intro</a>
+      <a href="#gallery" aria-label="Gallery of sample work">Gallery</a>
+      <a href="#inquire" aria-label="Commissioning portraits">Inquire</a>
     </nav>
 
-
-
-
     <section class="content-section">
-      <div class="content-wrapper">
-        <h2>About</h2>
+      <div id="about" class="content-wrapper">
+        <h1>Studio</h1>
         <p>
-          I enjoy working with individuals who are seeking timeless, painterly portraits to honor their legacies.
-          Many of my subjects seek to mark important life milestones, resilience through adversity, or simply because
-          the time feels right.
+          Hello and welcome.
         </p>
         <p>
-          Portraiture sessions are most often conducted at my studio space in Alexandria, VA.
-          Sessions are unhurried and unfold at their own pace.
-          Subjects can expect to spend between two-to-four hours at the studio.
-          My availability is limited to a few occasions per month.
+          This endeavor is more of an art project and less of a photography business.
+          I take commissioned portraits a few times per year.
         </p>
         <p>
           The portraits are meant to last generations, and offer a striking glimpse of the subject's presence and
@@ -358,8 +371,9 @@
         <h3>Studio</h3>
         <address>
           Union 206 Studios <br>
+          822 S Pickett St, Alexandria, VA 22304 <br />
           <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
-            822 S Pickett St, Alexandria, VA 22304
+            [map]
           </a>
         </address>
 
@@ -379,7 +393,7 @@
     <section class="parallax-section" style="background-image: url('/gallery/RN-1.jpg');">
     </section>
 
-    <section id="about" class="content-section">
+    <section id="about2" class="content-section">
       <div class="content-wrapper">
         <h2>About</h2>
         <p>
@@ -406,36 +420,7 @@
       </div>
     </section>
 
-    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-16.jpg');">
-    </section>
-
-    <section id="contact" class="content-section">
-      <div class="content-wrapper">
-        <h2>Contact</h2>
-
-        <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
-            href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
-
-        <h3>Studio</h3>
-        <address>
-          Union 206 Studios <br>
-          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
-            822 S Pickett St, Alexandria, VA 22304
-          </a>
-        </address>
-
-        <br>
-        <h3>Makeup Arists</h3>
-        <p>
-          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-          optimal results.
-          I work with several experienced makeup artists and can connect you with the right one for your
-          portraits.
-        </p>
-      </div>
-    </section>
-
-    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-9.jpg');">
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-18.jpg');">
     </section>
 
     <section id="gallery" class="content-section">
@@ -455,25 +440,89 @@
           <div class="swiper-slide"><img src="/gallery/BVBWEB-5.jpg" alt="BVBWEB-5.jpg"></div>
           <div class="swiper-slide"><img src="/gallery/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
 
-          <div class="swiper-pagination"></div>
         </div>
+        <div class="swiper-pagination">PAGINATION</div>
+      </div>
+      <div class="content-wrapper">
+        <p>Something ought to go after the gallery.</p>
       </div>
     </section>
+
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-16.jpg');">
+    </section>
+
+    <section id="inquire" class="content-section">
+      <div class="content-wrapper">
+        <h2 name="inquire">Inquire</h2>
+        <p>
+          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
+          optimal results.
+          I work with several experienced makeup artists and can connect you with the right one for your
+          portraits.
+        </p>
+        <h3>Contact</h3>
+        <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
+            href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
+
+        <h3>Location</h3>
+        <address>
+          Union 206 Studios <br>
+          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
+            822 S Pickett St, Alexandria, VA 22304
+          </a>
+        </address>
+
+        <br>
+      </div>
+      <div class="content-wrapper">
+        <h2>Commissions</h2>
+        <h3>Makeup Arists</h3>
+        <p>
+          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
+          optimal results.
+          I work with several experienced makeup artists and can connect you with the right one for your
+          portraits.
+        </p>
+        <h3>Other Info</h3>
+        <p>
+          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
+          optimal results.
+          I work with several experienced makeup artists and can connect you with the right one for your
+          portraits.
+        </p>
+        <h3>Results</h3>
+        <p>
+          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
+          optimal results.
+          I work with several experienced makeup artists and can connect you with the right one for your
+          portraits.
+        </p>
+      </div>
+    </section>
+
+
+    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-9.jpg');">
+    </section>
+
   </main>
 
   <footer class="main-footer">
-    <div class="content-wrapper">
-      <hr>
-      <p>&copy; 2025 <a href="/">B&middot;V&middot;B Portraits</a>
-        <br>
-        822 S Pickett St, Alexandria, VA 22304
-      </p>
-      <p><a style="color: var(--color-accent);" onclick="toggleQR()">[ QR Code ]</a></p>
-      <p id="qr-code" style="display: none;">
-        <img src="/resources/qr-code.png" style="max-width: 95vw;" alt="A QR code containing the link to this site.">
-      </p>
-    </div>
+    <section class="content-section">
+
+      <div class="content-wrapper">
+        <hr>
+        <p>&copy; 2025 <a href="/">B&middot;V&middot;B Portraits</a>
+          <br>
+          822 S Pickett St, Alexandria, VA 22304
+        </p>
+        <p><a style="color: var(--color-accent);" onclick="toggleQR()">[ QR Code ]</a></p>
+        <p id="qr-code" style="display: none;">
+          <img src="/resources/qr-code.png" style="max-width: 95vw;" alt="A QR code containing the link to this site.">
+        </p>
+      </div>
+    </section>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     // When QR code is expanded, scroll to view it.
