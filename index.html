@@ -147,7 +147,7 @@
       background: linear-gradient(to bottom, var(--color-background) 50%, transparent);
       display: flex;
       justify-content: center;
-      
+
       /* THE MAGIC: Fade Transition */
       /* Use opacity for the fade, visibility to kill the click area */
       transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -170,7 +170,7 @@
       opacity: 0;
       visibility: hidden;
       /* pointer-events: none ensures you can't click hidden links */
-      pointer-events: none; 
+      pointer-events: none;
     }
 
     nav::after {
@@ -277,11 +277,11 @@
       gap: 5rem;
 
       & .content-wrapper {
-        max-width: 65ch;
+        max-width: 60ch;
         margin: 0;
 
         & img {
-          width: 90%;
+          width: 100%;
           max-width: 800px;
           display: block;
           margin: 0 auto;
@@ -304,13 +304,13 @@
       width: 100%;
       position: relative;
       /* Restoring hidden overflow to fix page width blowout */
-      overflow: hidden; 
+      overflow: hidden;
     }
 
     .swiper-wrapper {
       align-items: center;
       /* Restoring standard behavior */
-      /* overflow: visible; */ 
+      /* overflow: visible; */
     }
 
     .swiper-slide {
@@ -358,9 +358,9 @@
     }
 
     .swiper-pagination-bullet-active {
-        background-color: var(--color-gold);
-        border-color: var(--color-gold);
-        opacity: 1;
+      background-color: var(--color-gold);
+      border-color: var(--color-gold);
+      opacity: 1;
     }
   </style>
 </head>
@@ -384,81 +384,23 @@
 
     <section class="content-section">
       <div id="about" class="content-wrapper">
-        <h1>Intro</h1>
+        <h2>Intro</h2>
         <p>
-          This endeavor is more of an art project and less of a photography business.
-          I take commissioned portraits a few times per year.
+          I create portraits in the <em>chiaroscuro</em> style, using bold contrast and careful lighting designs to
+          render subjects emerging from darkness.
+          This is not a full-time venture, rather an art project. I take comissions on occasion.
         </p>
         <p>
-          The portraits are meant to last generations, and offer a striking glimpse of the subject's presence and
-          character.
-          Like my great-grandfather's portrait that retains its charge after a century, the work gets better with age.
+          There is one specific piece of feedback I get that led me to grow this practice: that my subjects recognize
+          themselves in them.
+          It's not just because they look better, but because they see the person they know themselves to be.
         </p>
-        <p>
-          <i>Commissions start at $1800</i>, including professional makeup and archival-grade framed prints.
-        </p>
-        <img class="" src="/gallery/BVB-BV-0002.jpg" alt="Self-portrait of the photgrapher">
+        <img class="" src="/gallery/BVB-BV-0003.jpg" alt="Self-portrait of the photgrapher">
         <p> &mdash; Bill Van Besien</p>
-      </div>
-      <div class="content-wrapper">
-        <h2>Contact</h2>
-
-        <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
-            href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
-
-        <h3>Studio</h3>
-        <address>
-          Union 206 Studios <br>
-          822 S Pickett St, Alexandria, VA 22304 <br />
-          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
-            [map]
-          </a>
-        </address>
-
-        <br>
-        <h3>Makeup Arists</h3>
-        <p>
-          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-          optimal results.
-          I work with several experienced makeup artists and can connect you with the right one for your
-          portraits.
-        </p>
       </div>
     </section>
 
-    <!-- <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-3.jpg');">
-    </section> -->
     <section class="parallax-section" style="background-image: url('/gallery/RN-1.jpg');">
-    </section>
-
-    <section id="about2" class="content-section">
-      <div class="content-wrapper">
-        <h2>About</h2>
-        <p>
-          I enjoy working with individuals who are seeking timeless, painterly portraits to honor their legacies.
-          Many of my subjects seek to mark important life milestones, resilience through adversity, or simply because
-          the time feels right.
-        </p>
-        <p>
-          Portraiture sessions are most often conducted at my studio space in Alexandria, VA.
-          Sessions are unhurried and unfold at their own pace.
-          Subjects can expect to spend between two-to-four hours at the studio.
-          My availability is limited to a few occasions per month.
-        </p>
-        <p>
-          The portraits are meant to last generations, and offer a striking glimpse of the subject's presence and
-          character.
-          Like my great-grandfather's portrait that retains its charge after a century, the work gets better with age.
-        </p>
-        <p>
-          <i>Commissions start at $1800</i>, including professional makeup and archival-grade framed prints.
-        </p>
-        <img src="/resources/Self1.jpg" style="max-height: 250px; margin: 2rem;" alt="Self-portrait of the photgrapher">
-        <p> &mdash; Bill Van Besien</p>
-      </div>
-    </section>
-
-    <section class="parallax-section" style="background-image: url('/gallery/BVB-M-01.jpg');">
     </section>
 
     <section id="gallery" class="content-section">
@@ -488,56 +430,44 @@
 
     <section id="inquire" class="content-section">
       <div class="content-wrapper">
-        <h2 name="inquire">Inquire</h2>
+        <h2 name="inquire">Contact</h2>
         <p>
-          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-          optimal results.
-          I work with several experienced makeup artists and can connect you with the right one for your
-          portraits.
+          I photograph at the <em>Union 206</em> studios in Alexandria, VA. Email is the best way to contact me.
         </p>
-        <h3>Contact</h3>
-        <p><a href="mailto:vanbesien@gmail.com">vanbesien@gmail.com</a> &middot; <a target="_blank"
-            href="https://www.instagram.com/photobvb/">Instagram @photobvb</a></p>
+        <p>Email: <a href="mailto:studio@bvbportraits.com">vanbesien@gmail.com</a>
+          <br />Instagram: <a target="_blank" href="https://www.instagram.com/photobvb/">@photobvb</a>
+        </p>
 
         <h3>Location</h3>
         <address>
           Union 206 Studios <br>
-          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7">
-            822 S Pickett St, Alexandria, VA 22304
+          <a href="https://maps.app.goo.gl/H4xN2rJJCgew7cvY7" target="_blank">
+            822 S Pickett St, Alexandria, VA 22304 <br /> [map]
           </a>
         </address>
-
-        <br>
       </div>
       <div class="content-wrapper">
         <h2>Commissions</h2>
-        <h3>Makeup Arists</h3>
         <p>
-          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-          optimal results.
-          I work with several experienced makeup artists and can connect you with the right one for your
-          portraits.
+          I take commissions on occasion.
+          Some book for themselves, others arrange sessions as gifts for loved ones.
+          Commissioned portrait sessions start at $1,800.
         </p>
-        <h3>Other Info</h3>
         <p>
-          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-          optimal results.
-          I work with several experienced makeup artists and can connect you with the right one for your
-          portraits.
         </p>
-        <h3>Results</h3>
         <p>
-          Studio strobes are indispensable for shaping light, but require skilled makeup artistry to achieve
-          optimal results.
-          I work with several experienced makeup artists and can connect you with the right one for your
-          portraits.
+          These sessions are unhurried and take the time they need.
+          Subjects are always welcome to bring a companion.
+        </p>
+        <p>
+          I work with several experienced makeup artists familiar with my style, commissions include their services.
         </p>
       </div>
     </section>
-
+    <!-- 
 
     <section class="parallax-section" style="background-image: url('/gallery/BVB-BV-0001.jpg');">
-    </section>
+    </section> -->
 
   </main>
 
@@ -597,16 +527,16 @@
     // ----------------------------------------------------
     let lastScrollTop = 0;
     const nav = document.querySelector('nav');
-    
-    // Threshold to prevent jitter on tiny movements
-    const delta = 5; 
 
-    window.addEventListener('scroll', function() {
+    // Threshold to prevent jitter on tiny movements
+    const delta = 5;
+
+    window.addEventListener('scroll', function () {
       let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
       // Make sure they scrolled more than delta
-      if(Math.abs(lastScrollTop - currentScroll) <= delta)
-          return;
+      if (Math.abs(lastScrollTop - currentScroll) <= delta)
+        return;
 
       // CRITICAL CHECK:
       // Only hide the nav if it is actually DOCKED at the top of the screen.
@@ -615,16 +545,16 @@
       const navRect = nav.getBoundingClientRect();
       const isDocked = navRect.top <= 1; // 1px tolerance
 
-      if (currentScroll > lastScrollTop && isDocked){
-          // Scroll Down -> Fade Out
-          nav.classList.add('nav-hidden');
+      if (currentScroll > lastScrollTop && isDocked) {
+        // Scroll Down -> Fade Out
+        nav.classList.add('nav-hidden');
       } else {
-          // Scroll Up -> Fade In
-          nav.classList.remove('nav-hidden');
+        // Scroll Up -> Fade In
+        nav.classList.remove('nav-hidden');
       }
-      
+
       // Reset logic for iOS bounce (don't go negative)
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
 
 
