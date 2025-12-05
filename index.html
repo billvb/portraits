@@ -11,13 +11,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon-16x16.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Playfair+Display:wght@400;700&display=swap"
-    rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@200;400&display=swap"
     rel="stylesheet">
@@ -147,13 +143,9 @@
       background: linear-gradient(to bottom, var(--color-background) 50%, transparent);
       display: flex;
       justify-content: center;
-
-      /* THE MAGIC: Fade Transition */
-      /* Use opacity for the fade, visibility to kill the click area */
       transition: opacity 0.5s ease, visibility 0.5s ease;
       opacity: 1;
       visibility: visible;
-
       & a {
         font-size: 1.1rem;
         padding: 1rem;
@@ -165,7 +157,6 @@
       }
     }
 
-    /* THE HIDDEN STATE (Applied by JS) */
     nav.nav-hidden {
       opacity: 0;
       visibility: hidden;
@@ -220,7 +211,6 @@
         -webkit-mask-repeat: no-repeat;
         -webkit-mask-position: center;
 
-        /* Firefox / Standard */
         mask-image: url(/resources/signature-2b.png);
         mask-size: contain;
         mask-repeat: no-repeat;
@@ -260,7 +250,7 @@
 
       @media (max-width: 768px) {
         background-attachment: scroll;
-        background-size: cover;
+        background-size: covero
       }
     }
 
@@ -284,7 +274,7 @@
           width: 100%;
           max-width: 800px;
           display: block;
-          margin: 0 auto;
+          margin: 2rem auto;
           padding: 30px 0;
           box-shadow: 0 0px 20px rgba(0, 0, 0, 1);
         }
@@ -300,17 +290,15 @@
     }
 
     .swiper {
+      max-height: 800px;
       height: 90vh;
       width: 100%;
       position: relative;
-      /* Restoring hidden overflow to fix page width blowout */
       overflow: hidden;
     }
 
     .swiper-wrapper {
       align-items: center;
-      /* Restoring standard behavior */
-      /* overflow: visible; */
     }
 
     .swiper-slide {
@@ -373,7 +361,7 @@
       <a href="#about">Intro</a>
     </header>
 
-    <section class="parallax-section" style="background-image: url('/gallery/Fon-1.jpg');">
+    <section class="parallax-section" style="background-image: url('/gallery/BVB-0086.jpg');">
     </section>
 
     <nav aria-label="Main">
@@ -386,21 +374,19 @@
       <div id="about" class="content-wrapper">
         <h2>Intro</h2>
         <p>
-          I create portraits in the <em>chiaroscuro</em> style, using bold contrast and careful lighting designs to
-          render subjects emerging from darkness.
-          This is not a full-time venture, rather an art project. I take comissions on occasion.
-        </p>
-        <p>
-          There is one specific piece of feedback I get that led me to grow this practice: that my subjects recognize
-          themselves in them.
-          It's not just because they look better, but because they see the person they know themselves to be.
+          I enjoy creating portraits in the <em>chiaroscuro</em> style, using bold contrast and careful lighting designs to render subjects emerging from darkness.
+          This is not a full-time venture, rather it's part of a broader artistic project and study.
+          I'm always happy to work with interested subjects, and I take comissions on occasion.
         </p>
         <img class="" src="/gallery/BVB-BV-0003.jpg" alt="Self-portrait of the photgrapher">
-        <p> &mdash; Bill Van Besien</p>
+        <p>
+          A surprising and touching remark that I've heard from subjects led me to grow this practice, which is that they've never seen themselves in such dignified and authentic manner.
+          It's not just because they look better, but because the person they see in that photograph matches their own self conception.
+        </p>
       </div>
     </section>
 
-    <section class="parallax-section" style="background-image: url('/gallery/RN-1.jpg');">
+    <section class="parallax-section" style="background-image: url('/gallery/BVB-0249.jpg');">
     </section>
 
     <section id="gallery" class="content-section">
@@ -409,23 +395,16 @@
       </div>
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-15.jpg" alt="BVBWEB-15.jpg"></div>
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-14.jpg" alt="BVBWEB-14.jpg"></div>
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-8.jpg" alt="BVBWEB-8.jpg"></div>
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-11.jpg" alt="BVBWEB-11.jpg"></div>
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-6.jpg" alt="BVBWEB-6.jpg"></div>
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-19.jpg" alt="BVBWEB-19.jpg"></div>
-          <div class="swiper-slide"><img src="/gallery/BVBWEB-1.jpg" alt="BVBWEB-1.jpg"></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-16.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="/gallery/BVB-0068.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-6.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="/gallery/BVB-M-01.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="/gallery/BVBWEB-3.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="/gallery/BVB-Wolf-1.jpg" alt=""></div>
 
         </div>
         <div class="swiper-pagination"></div>
       </div>
-      <div class="content-wrapper">
-        <p>Something ought to go after the gallery.</p>
-      </div>
-    </section>
-
-    <section class="parallax-section" style="background-image: url('/gallery/BVBWEB-16.jpg');">
     </section>
 
     <section id="inquire" class="content-section">
@@ -434,7 +413,7 @@
         <p>
           I photograph at the <em>Union 206</em> studios in Alexandria, VA. Email is the best way to contact me.
         </p>
-        <p>Email: <a href="mailto:studio@bvbportraits.com">vanbesien@gmail.com</a>
+        <p>Email: <a href="mailto:studio@bvbportraits.com">studio@bvbportraits.com</a>
           <br />Instagram: <a target="_blank" href="https://www.instagram.com/photobvb/">@photobvb</a>
         </p>
 
@@ -454,21 +433,16 @@
           Commissioned portrait sessions start at $1,800.
         </p>
         <p>
-        </p>
-        <p>
-          These sessions are unhurried and take the time they need.
-          Subjects are always welcome to bring a companion.
-        </p>
-        <p>
+          The sessions generally take place at the fully-equipped studio space in Alexandria, VA.
+          They are unhurried and take the time they need, and often include a variety of wardrobe selections and lighting compositions.
           I work with several experienced makeup artists familiar with my style, commissions include their services.
+        </p>
+        <p>
+          Subjects are welcome to bring a companion, and the studio always has a receptionist on-site.
+          I'm always happy to answer questions, provide references, and exhibit additional samples from my portfolio.
         </p>
       </div>
     </section>
-    <!-- 
-
-    <section class="parallax-section" style="background-image: url('/gallery/BVB-BV-0001.jpg');">
-    </section> -->
-
   </main>
 
   <footer class="main-footer">
@@ -505,12 +479,12 @@
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 'auto',
       centeredSlides: true,
-      spaceBetween: 30, // Gap between images
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
+      spaceBetween: 50, // Gap between images
+      // loop: true,
+      //autoplay: {
+      //  delay: 4000,
+      //  disableOnInteraction: false,
+      //},
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -522,9 +496,6 @@
     });
     swiper.el.onclick = () => swiper.slideNext();
 
-    // ----------------------------------------------------
-    // SCROLL DIRECTION LOGIC (THE "SMART NAV")
-    // ----------------------------------------------------
     let lastScrollTop = 0;
     const nav = document.querySelector('nav');
 
@@ -538,10 +509,6 @@
       if (Math.abs(lastScrollTop - currentScroll) <= delta)
         return;
 
-      // CRITICAL CHECK:
-      // Only hide the nav if it is actually DOCKED at the top of the screen.
-      // If the user is scrolling down through the hero image, the nav isn't sticky yet,
-      // so we must force it to stay visible.
       const navRect = nav.getBoundingClientRect();
       const isDocked = navRect.top <= 1; // 1px tolerance
 
@@ -558,9 +525,6 @@
     });
 
 
-    // ----------------------------------------------------
-    // ANALYTICS & DEBUG
-    // ----------------------------------------------------
     let debug = false;
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.swiper-slide').forEach(slide => {
